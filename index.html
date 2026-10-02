@@ -3,113 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>sardinesPoorevah</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 40px 20px;
-            background: #f5f5f5;
-            color: #222;
+            min-height: 100vh;
+            background: #ffe6f0;
+            color: #4a2633;
             font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.8;
+        }
+
+        /* =========================
+           OPENING SCREEN
+        ========================== */
+
+        #opening {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffd1e2, #fff0f6);
+        }
+
+        .open-box {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 55px 35px;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(190, 70, 110, 0.20);
+            border: 1px solid #f5c1d5;
+        }
+
+        .heart {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .open-box h1 {
+            color: #c94f7c;
+            font-size: 32px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .open-box p {
+            color: #805466;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        #openButton {
+            border: none;
+            padding: 15px 32px;
+            border-radius: 30px;
+            background: #e86b9a;
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(190, 70, 110, 0.25);
+            transition: 0.3s;
+        }
+
+        #openButton:hover {
+            background: #d95487;
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           LETTER PAGE
+        ========================== */
+
+        #letterPage {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #ffe6f0, #fff5f8);
         }
 
         .letter {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: #fffafa;
             padding: 45px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(190, 70, 110, 0.15);
+            border: 1px solid #f4bfd3;
         }
 
-        h1 {
+        .letter-title {
             text-align: center;
+            color: #c94f7c;
+            font-size: 32px;
             font-weight: normal;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        p {
-            margin-bottom: 24px;
+        /* =========================
+           AESTHETIC MUSIC PLAYER
+        ========================== */
+
+        .music-card {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            padding: 18px 20px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #fff0f6, #ffe1ec);
+            border: 1px solid #f3bfd2;
+            box-shadow: 0 8px 25px rgba(190, 70, 110, 0.13);
+        }
+
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 15px;
+        }
+
+        .music-cover {
+            width: 58px;
+            height: 58px;
+            min-width: 58px;
+            border-radius: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e86b9a, #f5a4c1);
+            color: white;
+            font-size: 25px;
+            box-shadow: 0 5px 15px rgba(190, 70, 110, 0.20);
+        }
+
+        .music-text {
+            flex: 1;
+        }
+
+        .music-text .song-name {
+            color: #a63f68;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .music-text .artist {
+            color: #9b7180;
+            font-size: 13px;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #playButton {
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #e86b9a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(190, 70, 110, 0.25);
+            transition: 0.25s;
+            flex-shrink: 0;
+        }
+
+        #playButton:hover {
+            background: #d95487;
+            transform: scale(1.08);
+        }
+
+        .progress-container {
+            flex: 1;
+        }
+
+        #progress {
+            width: 100%;
+            height: 5px;
+            appearance: none;
+            -webkit-appearance: none;
+            border-radius: 10px;
+            background: #f4bfd2;
+            cursor: pointer;
+        }
+
+        #progress::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #e86b9a;
+            cursor: pointer;
+        }
+
+        #progress::-moz-range-thumb {
+            width: 13px;
+            height: 13px;
+            border: none;
+            border-radius: 50%;
+            background: #e86b9a;
+            cursor: pointer;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            color: #a47787;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+        }
+
+        /* =========================
+           LETTER TEXT
+        ========================== */
+
+        .letter p {
+            margin-bottom: 25px;
+            line-height: 1.9;
             text-align: justify;
+            font-size: 17px;
         }
 
         .signature {
-            text-align: right;
-            margin-top: 40px;
+            text-align: right !important;
+            margin-top: 45px;
+            color: #c94f7c;
             font-style: italic;
+            font-size: 18px !important;
         }
 
+        /* =========================
+           MOBILE
+        ========================== */
+
         @media (max-width: 600px) {
-            body {
+
+            #letterPage {
                 padding: 15px;
             }
 
             .letter {
-                padding: 25px;
+                padding: 25px 20px;
+            }
+
+            .open-box {
+                padding: 40px 25px;
+            }
+
+            .open-box h1 {
+                font-size: 27px;
+            }
+
+            .letter-title {
+                font-size: 27px;
+            }
+
+            .letter p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .music-card {
+                padding: 15px;
             }
         }
     </style>
 </head>
 
-<<audio controls loop>
-    <source src="Panaginip - nicole (Lyrics).mp3" type="audio/mpeg">
-</audio>>
+<body>
 
-<div class="letter">
+    <!-- =========================
+         OPENING SCREEN
+    ========================== -->
 
-    <h1>sardinesPoorevah</h1>
+    <div id="opening">
 
-    <p>
-        Patawad unang una sa lahat.. may dahilan ang aking katahimikan at pag iwas,
-        tumopad lang ako sa usapan na hayaan na daw muna kita hanggang sa makapagtapos..
-        hanggang sa nakikita ko na masaya at nasa mabuti ka, at ayoko ko nang sirain uli yon
-        at bilang respeto sa lahat ng mga nagmamahal sayo, malake ang respeto ko sa buong
-        pamilya mo,. at sa tingin ko yon ang mas mahirap tanggapin o gawin, wala akong
-        Karapatan.
-    </p>
+        <div class="open-box">
 
-    <p>
-        Ayokong sirain ang potensyal mo, dahil maraming taong naniniwala sayo na
-        "malayo ang mararating mo."
-    </p>
+            <div class="heart">💌</div>
 
-    <p>
-        Patawad sa pagiging mahina ko.... wala ako sa normal na ako sa mga panahon nayon,
-        sa totoo lang wala akong natandaan sa mga nangyare satin non, hanggang sa..
-        siguro "nagising" nadugtong-dugtong ko nalang....
-    </p>
+            <h1>sardinesPoorevah</h1>
 
-    <p>
-        Hindi pala sa sinasabe ko na ako ang tama, wala akong galit.
-        Kung meron man siguro tampo .. matagal ko narin pala nasulat to at gustong
-        sabihin o ibigay ng personal heheh (may prof.)...
-    </p>
+            <p>
+                May isang bagay akong gustong sabihin...
+            </p>
 
-    <p>
-        Pasensya kung di manlang mas nakilala ng husto,{ basta ito nalang ,
-        hindi sa pag mamayabang (dahil Kahit kailan parang mortal sin sakin yon heheh),
-        yong palagi kung pagpapatawa o yumor sa jokes (on the spot)/humble kahit yon lang
-        ayokong mag mukhang sobrang galing hahah siguro ihalintulad kahit kunti nalang o
-        hahah kay Ranchoddas Chanchad, pasensya na kung nasingit pa to heheh}.......
-    </p>
+            <button id="openButton">
+                Open Letter
+            </button>
 
-    <p>
-        Nangibabaw sa akin ang hiya at pagiging di handa.
-        Kasalanan ko lahat.. hindi balewala sakin lahat kung alam mo lang,..
-        isa ka sa mga naging inspirasyon ko kung bat nag papatuloy,
-        kasama ka sa mga panalangin na naway nasa mabuti ka palagi.
-    </p>
+        </div>
 
-    <p>
-        Ito na ang unat huli. patawad.. patawad.
-    </p>
+    </div>
 
-    <p class="signature">
-        -Phunsukh Wangdu
-    </p>
 
-</div>
+    <!-- =========================
+         LETTER
+    ========================== -->
+
+    <div id="letterPage">
+
+        <div class="letter">
+
+            <h1 class="letter-title">
+                sardinesPoorevah
+            </h1>
+
+
+            <!-- AESTHETIC MUSIC PLAYER -->
+
+            <div class="music-card">
+
+                <div class="music-info">
+
+                    <div class="music-cover">
+                        ♫
+                    </div>
+
+                    <div class="music-text">
+
+                        <div class="song-name">
+                            Panaginip
+                        </div>
+
+                        <div class="artist">
+                            Nicole
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="music-controls">
+
+                    <button id="playButton">
+                        ▶
+                    </button>
+
+                    <div class="progress-container">
+
+                        <input
+                            type="range"
+                            id="progress"
+                            value="0"
+                            min="0"
+                            max="100"
+                        >
+
+                        <div class="time">
+
+                            <span id="currentTime">
+                                0:00
+                            </span>
+
+                            <span id="duration">
+                                0:00
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <audio id="music" loop>
+
+                    <source src="music.mp3" type="audio/mpeg">
+
+                </audio>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <p>
+                Patawad unang una sa lahat.. may dahilan ang aking katahimikan at pag iwas,
+                tumopad lang ako sa usapan na hayaan na daw muna kita hanggang sa makapagtapos..
+                hanggang sa nakikita ko na masaya at nasa mabuti ka, at ayoko ko nang sirain uli yon
+                at bilang respeto sa lahat ng mga nagmamahal sayo, malake ang respeto ko sa buong
+                pamilya mo,. at sa tingin ko yon ang mas mahirap tanggapin o gawin, wala akong
+                Karapatan.
+            </p>
+
+            <p>
+                Ayokong sirain ang potensyal mo, dahil maraming taong naniniwala sayo na
+                "malayo ang mararating mo."
+            </p>
+
+            <p>
+                Patawad sa pagiging mahina ko.... wala ako sa normal na ako sa mga panahon nayon,
+                sa totoo lang wala akong natandaan sa mga nangyare satin non, hanggang sa..
+                siguro "nagising" nadugtong-dugtong ko nalang....
+            </p>
+
+            <p>
+                Hindi pala sa sinasabe ko na ako ang tama, wala akong galit.
+                Kung meron man siguro tampo .. matagal ko narin pala nasulat to at gustong
+                sabihin o ibigay ng personal heheh (may prof.)...
+            </p>
+
+            <p>
+                Pasensya kung di manlang mas nakilala ng husto,{ basta ito nalang ,
+                hindi sa pag mamayabang (dahil Kahit kailan parang mortal sin sakin yon heheh),
+                yong palagi kung pagpapatawa o yumor sa jokes (on the spot)/humble kahit yon lang
+                ayokong mag mukhang sobrang galing hahah siguro ihalintulad kahit kunti nalang o
+                hahah kay Ranchoddas Chanchad, pasensya na kung nasingit pa to heheh}.......
+            </p>
+
+            <p>
+                Nangibabaw sa akin ang hiya at pagiging di handa.
+                Kasalanan ko lahat.. hindi balewala sakin lahat kung alam mo lang,..
+                isa ka sa mga naging inspirasyon ko kung bat nag papatuloy,
+                kasama ka sa mga panalangin na naway nasa mabuti ka palagi.
+            </p>
+
+            <p>
+                Ito na ang unat huli. patawad.. patawad.
+            </p>
+
+            <p class="signature">
+                -Phunsukh Wangdu
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const openButton = document.getElementById("openButton");
+        const opening = document.getElementById("opening");
+        const letterPage = document.getElementById("letterPage");
+
+        const music = document.getElementById("music");
+        const playButton = document.getElementById("playButton");
+
+        const progress = document.getElementById("progress");
+        const currentTime = document.getElementById("currentTime");
+        const duration = document.getElementById("duration");
+
+
+        /* Open letter + start music */
+
+        openButton.addEventListener("click", function () {
+
+            opening.style.display = "none";
+            letterPage.style.display = "block";
+
+            music.play().then(function () {
+
+                playButton.textContent = "❚❚";
+
+            }).catch(function () {
+
+                playButton.textContent = "▶";
+
+            });
+
+        });
+
+
+        /* Play / Pause */
+
+        playButton.addEventListener("click", function () {
+
+            if (music.paused) {
+
+                music.play();
+                playButton.textContent = "❚❚";
+
+            } else {
+
+                music.pause();
+                playButton.textContent = "▶";
+
+            }
+
+        });
+
+
+        /* Format time */
+
+        function formatTime(seconds) {
+
+            if (isNaN(seconds)) {
+                return "0:00";
+            }
+
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+
+            return minutes + ":" + (secs < 10 ? "0" : "") + secs;
+
+        }
+
+
+        /* Music duration */
+
+        music.addEventListener("loadedmetadata", function () {
+
+            duration.textContent = formatTime(music.duration);
+
+        });
+
+
+        /* Progress */
+
+        music.addEventListener("timeupdate", function () {
+
+            if (music.duration) {
+
+                progress.value =
+                    (music.currentTime / music.duration) * 100;
+
+            }
+
+            currentTime.textContent =
+                formatTime(music.currentTime);
+
+        });
+
+
+        /* Seek music */
+
+        progress.addEventListener("input", function () {
+
+            if (music.duration) {
+
+                music.currentTime =
+                    (progress.value / 100) * music.duration;
+
+            }
+
+        });
+
+
+        /* Reset button when song loops */
+
+        music.addEventListener("play", function () {
+
+            playButton.textContent = "❚❚";
+
+        });
+
+
+        music.addEventListener("pause", function () {
+
+            playButton.textContent = "▶";
+
+        });
+
+    </script>
 
 </body>
 </html>
