@@ -9,24 +9,25 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    margin:0;
-    min-height:100vh;
+body {
+    margin: 0;
+    min-height: 100vh;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-family: Georgia, "Times New Roman", serif;
 
-    color:#542c3b;
+    color: #542c3b;
 
     background:
         radial-gradient(
@@ -45,98 +46,128 @@ body{
             #fff2f7
         );
 
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 
 /* =========================
-   OPENING
+   PASSWORD SCREEN
 ========================= */
 
-#opening{
+#passwordScreen {
+    min-height: 100vh;
 
-    min-height:100vh;
+    display: flex;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
 
-    padding:20px;
+    padding: 20px;
 
-    text-align:center;
+    text-align: center;
 }
 
-.open-box{
+.password-box {
+    width: 100%;
+    max-width: 430px;
 
-    width:100%;
-    max-width:500px;
+    padding: 50px 35px;
 
-    padding:55px 35px;
+    background: rgba(255,255,255,.97);
 
-    background:
-        rgba(255,255,255,.96);
+    border: 1px solid #f3b8d0;
 
-    border:
-        1px solid #f4b9d0;
-
-    border-radius:30px;
+    border-radius: 30px;
 
     box-shadow:
         0 20px 60px
-        rgba(190,70,110,.18);
+        rgba(190,70,110,.20);
 
-    animation:
-        appear 1.2s ease;
+    animation: appear 1s ease;
 }
 
-.open-flower{
+.password-flower {
+    font-size: 65px;
 
-    font-size:65px;
-
-    margin-bottom:10px;
+    margin-bottom: 10px;
 
     animation:
         flowerFloat 3s ease-in-out infinite;
 }
 
-.open-box h1{
+.password-box h1 {
+    margin: 0 0 10px;
 
-    margin:0 0 15px;
+    color: #d34f80;
 
-    color:#d34f80;
+    font-size: 34px;
 
-    font-size:34px;
-
-    font-weight:normal;
+    font-weight: normal;
 }
 
-.open-box p{
+.password-box p {
+    color: #956477;
 
-    color:#86576a;
+    font-size: 16px;
 
-    font-size:17px;
+    line-height: 1.6;
 
-    line-height:1.7;
-
-    margin-bottom:30px;
+    margin-bottom: 25px;
 }
 
-#openButton{
+.password-input {
+    width: 100%;
 
-    border:none;
+    padding: 15px 18px;
 
-    padding:
-        15px 35px;
+    border: 1px solid #efb3ca;
 
-    border-radius:40px;
+    border-radius: 15px;
 
-    color:white;
+    outline: none;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #733c51;
+
+    background: #fff8fb;
+
+    transition: .25s ease;
+}
+
+.password-input:focus {
+    border-color: #dc6190;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(220,97,144,.10);
+}
+
+.unlock-button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    color: white;
 
     background:
         linear-gradient(
             135deg,
-            #ec6fa0,
-            #d94f83
+            #ed70a0,
+            #d85184
         );
 
     font-family:
@@ -144,23 +175,31 @@ body{
         "Times New Roman",
         serif;
 
-    font-size:17px;
+    font-size: 17px;
 
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
         0 8px 22px
         rgba(190,70,110,.25);
 
-    transition:
-        .3s ease;
+    transition: .3s ease;
 }
 
-#openButton:hover{
-
+.unlock-button:hover {
     transform:
-        translateY(-3px)
-        scale(1.04);
+        translateY(-2px)
+        scale(1.02);
+}
+
+.error-message {
+    min-height: 22px;
+
+    margin-top: 15px;
+
+    color: #d34f80;
+
+    font-size: 14px;
 }
 
 
@@ -168,33 +207,30 @@ body{
    LETTER PAGE
 ========================= */
 
-#letterPage{
+#letterPage {
+    display: none;
 
-    display:none;
-
-    min-height:100vh;
+    min-height: 100vh;
 
     padding:
         45px 20px
         100px;
 
-    position:relative;
+    position: relative;
 }
 
-.letter{
+.letter {
+    position: relative;
 
-    position:relative;
+    z-index: 2;
 
-    z-index:2;
+    width: 100%;
 
-    width:100%;
+    max-width: 900px;
 
-    max-width:900px;
+    margin: auto;
 
-    margin:auto;
-
-    padding:
-        55px;
+    padding: 55px;
 
     background:
         rgba(
@@ -207,7 +243,7 @@ body{
     border:
         1px solid #f2bdd2;
 
-    border-radius:25px;
+    border-radius: 25px;
 
     box-shadow:
         0 15px 50px
@@ -222,51 +258,48 @@ body{
    TITLE
 ========================= */
 
-.letter-title{
+.letter-title {
+    text-align: center;
 
-    text-align:center;
+    color: #d64e80;
 
-    color:#d64e80;
+    font-size: 40px;
 
-    font-size:40px;
-
-    font-weight:normal;
+    font-weight: normal;
 
     margin:
         5px 0
         8px;
 }
 
-.title-decoration{
+.title-decoration {
+    text-align: center;
 
-    text-align:center;
+    color: #e75f91;
 
-    color:#e75f91;
+    font-size: 22px;
 
-    font-size:22px;
-
-    margin-bottom:35px;
+    margin-bottom: 35px;
 }
 
 
 /* =========================
-   MUSIC
+   MUSIC PLAYER
 ========================= */
 
-.music-card{
-
-    max-width:590px;
+.music-card {
+    max-width: 590px;
 
     margin:
         0 auto
         45px;
 
-    padding:20px;
+    padding: 20px;
 
     border:
         1px solid #f1b7cf;
 
-    border-radius:25px;
+    border-radius: 25px;
 
     background:
         linear-gradient(
@@ -280,34 +313,32 @@ body{
         rgba(190,70,110,.12);
 }
 
-.music-info{
+.music-info {
+    display: flex;
 
-    display:flex;
+    align-items: center;
 
-    align-items:center;
+    gap: 15px;
 
-    gap:15px;
-
-    margin-bottom:18px;
+    margin-bottom: 18px;
 }
 
-.music-icon{
+.music-icon {
+    width: 62px;
+    height: 62px;
 
-    width:62px;
-    height:62px;
+    min-width: 62px;
 
-    min-width:62px;
+    display: flex;
 
-    display:flex;
+    justify-content: center;
+    align-items: center;
 
-    justify-content:center;
-    align-items:center;
+    border-radius: 18px;
 
-    border-radius:18px;
+    color: white;
 
-    color:white;
-
-    font-size:28px;
+    font-size: 28px;
 
     background:
         linear-gradient(
@@ -318,54 +349,49 @@ body{
 
     box-shadow:
         0 7px 18px
-        rgba(190,70,110,.2);
+        rgba(190,70,110,.20);
 }
 
-.music-icon.playing{
-
+.music-icon.playing {
     animation:
         musicPulse 1.5s infinite;
 }
 
-.song-name{
+.song-name {
+    color: #a83d68;
 
-    color:#a83d68;
+    font-size: 19px;
 
-    font-size:19px;
-
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.artist{
+.artist {
+    color: #9a7181;
 
-    color:#9a7181;
+    font-size: 14px;
 
-    font-size:14px;
-
-    margin-top:4px;
+    margin-top: 4px;
 }
 
-.music-controls{
+.music-controls {
+    display: flex;
 
-    display:flex;
+    align-items: center;
 
-    align-items:center;
-
-    gap:14px;
+    gap: 14px;
 }
 
-#playButton{
+#playButton {
+    width: 50px;
+    height: 50px;
 
-    width:50px;
-    height:50px;
+    min-width: 50px;
 
-    min-width:50px;
+    border: none;
 
-    border:none;
+    border-radius: 50%;
 
-    border-radius:50%;
-
-    color:white;
+    color: white;
 
     background:
         linear-gradient(
@@ -374,179 +400,118 @@ body{
             #d85384
         );
 
-    cursor:pointer;
+    cursor: pointer;
 
-    font-size:18px;
+    font-size: 18px;
 
     box-shadow:
         0 7px 18px
         rgba(190,70,110,.25);
 
-    transition:.25s ease;
+    transition: .25s ease;
 }
 
-#playButton:hover{
-
-    transform:scale(1.08);
+#playButton:hover {
+    transform: scale(1.08);
 }
 
-.progress-area{
-
-    flex:1;
+.progress-area {
+    flex: 1;
 }
 
-#progress{
+#progress {
+    width: 100%;
 
-    width:100%;
+    height: 6px;
 
-    height:6px;
+    appearance: none;
 
-    appearance:none;
-    -webkit-appearance:none;
+    -webkit-appearance: none;
 
-    background:#f2bdd1;
+    background: #f2bdd1;
 
-    border-radius:10px;
+    border-radius: 10px;
 
-    cursor:pointer;
+    cursor: pointer;
 }
 
-#progress::-webkit-slider-thumb{
+#progress::-webkit-slider-thumb {
+    appearance: none;
 
-    appearance:none;
-    -webkit-appearance:none;
+    -webkit-appearance: none;
 
-    width:14px;
-    height:14px;
+    width: 14px;
+    height: 14px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:#e65f91;
+    background: #e65f91;
 
-    cursor:pointer;
+    cursor: pointer;
 }
 
-#progress::-moz-range-thumb{
+.time {
+    display: flex;
 
-    width:14px;
-    height:14px;
+    justify-content: space-between;
 
-    border:none;
+    color: #a27888;
 
-    border-radius:50%;
+    font-family: Arial, sans-serif;
 
-    background:#e65f91;
-}
+    font-size: 11px;
 
-.time{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    color:#a27888;
-
-    font-family:Arial,sans-serif;
-
-    font-size:11px;
-
-    margin-top:7px;
+    margin-top: 7px;
 }
 
 
 /* =========================
-   LETTER TEXT
+   LETTER
 ========================= */
 
-.letter p{
+.letter p {
+    font-size: 17px;
 
-    font-size:17px;
+    line-height: 2;
 
-    line-height:2;
-
-    text-align:justify;
+    text-align: justify;
 
     margin:
         0 0
         27px;
-
-    opacity:0;
-
-    transform:
-        translateY(15px);
-
-    animation:
-        textAppear
-        .8s
-        ease
-        forwards;
 }
 
-.letter p:nth-of-type(1){
-    animation-delay:.2s;
-}
+.signature {
+    text-align: right !important;
 
-.letter p:nth-of-type(2){
-    animation-delay:.35s;
-}
+    color: #d85082 !important;
 
-.letter p:nth-of-type(3){
-    animation-delay:.5s;
-}
+    font-style: italic;
 
-.letter p:nth-of-type(4){
-    animation-delay:.65s;
-}
+    font-size: 19px !important;
 
-.letter p:nth-of-type(5){
-    animation-delay:.8s;
-}
-
-.letter p:nth-of-type(6){
-    animation-delay:.95s;
-}
-
-.letter p:nth-of-type(7){
-    animation-delay:1.1s;
-}
-
-.signature{
-
-    text-align:right !important;
-
-    color:#d85082 !important;
-
-    font-style:italic;
-
-    font-size:19px !important;
-
-    margin-top:45px !important;
+    margin-top: 45px !important;
 }
 
 
 /* =========================
-   SIDE STICKERS
+   SIDE IMAGES
 ========================= */
 
-.side-sticker{
+.side-sticker {
+    position: fixed;
 
-    position:fixed;
+    z-index: 1;
 
-    z-index:1;
+    object-fit: contain;
 
-    width:150px;
-
-    height:auto;
-
-    object-fit:contain;
+    pointer-events: none;
 
     filter:
         drop-shadow(
             0 8px 10px
             rgba(170,60,100,.15)
         );
-
-    pointer-events:none;
 
     animation:
         stickerFloat
@@ -555,40 +520,28 @@ body{
         infinite;
 }
 
-
-/* COURAGE LEFT */
-
-.courage-left{
-
+.courage-left {
     left:
         max(
             5px,
-            calc(
-                50% - 600px
-            )
+            calc(50% - 610px)
         );
 
-    top:46%;
+    top: 45%;
 
-    width:155px;
+    width: 155px;
 }
 
-
-/* BUNNY RIGHT */
-
-.bunny-right{
-
+.bunny-right {
     right:
         max(
             5px,
-            calc(
-                50% - 600px
-            )
+            calc(50% - 610px)
         );
 
-    top:45%;
+    top: 45%;
 
-    width:135px;
+    width: 135px;
 
     animation-delay:
         -1.5s;
@@ -596,24 +549,23 @@ body{
 
 
 /* =========================
-   TULIP DECORATION
+   TULIPS
 ========================= */
 
-.tulip-corner{
+.tulip-corner {
+    position: fixed;
 
-    position:fixed;
+    z-index: 1;
 
-    z-index:1;
+    bottom: -5px;
 
-    bottom:-5px;
+    font-size: 75px;
 
-    font-size:75px;
+    line-height: 1;
 
-    line-height:1;
+    opacity: .95;
 
-    opacity:.95;
-
-    pointer-events:none;
+    pointer-events: none;
 
     filter:
         drop-shadow(
@@ -622,65 +574,31 @@ body{
         );
 }
 
-.tulip-left{
-
-    left:10px;
+.tulip-left {
+    left: 10px;
 }
 
-.tulip-right{
-
-    right:10px;
+.tulip-right {
+    right: 10px;
 }
 
+.floating-tulip {
+    position: fixed;
 
-/* =========================
-   FLOATING TULIPS
-========================= */
+    z-index: 5;
 
-.floating-tulip{
+    bottom: -50px;
 
-    position:fixed;
+    pointer-events: none;
 
-    z-index:5;
-
-    bottom:-50px;
-
-    pointer-events:none;
-
-    font-size:22px;
+    font-size: 22px;
 
     animation:
         tulipFloat
         linear
         forwards;
 
-    opacity:.75;
-}
-
-
-/* =========================
-   SPARKLES
-========================= */
-
-.sparkle{
-
-    position:fixed;
-
-    color:white;
-
-    font-size:18px;
-
-    pointer-events:none;
-
-    z-index:0;
-
-    opacity:.7;
-
-    animation:
-        sparkleFloat
-        4s
-        ease-in-out
-        infinite;
+    opacity: .75;
 }
 
 
@@ -688,17 +606,14 @@ body{
    FOOTER
 ========================= */
 
-.footer{
+.footer {
+    text-align: center;
 
-    text-align:center;
+    color: #d25282;
 
-    color:#d25282;
+    font-size: 15px;
 
-    font-size:15px;
-
-    margin-top:35px;
-
-    padding-bottom:10px;
+    margin-top: 35px;
 }
 
 
@@ -706,133 +621,103 @@ body{
    ANIMATIONS
 ========================= */
 
-@keyframes appear{
+@keyframes appear {
+    from {
+        opacity: 0;
 
-    from{
-        opacity:0;
         transform:
             translateY(25px)
             scale(.96);
     }
 
-    to{
-        opacity:1;
+    to {
+        opacity: 1;
+
         transform:
             translateY(0)
             scale(1);
     }
 }
 
-@keyframes letterAppear{
+@keyframes letterAppear {
+    from {
+        opacity: 0;
 
-    from{
-        opacity:0;
         transform:
             translateY(25px);
     }
 
-    to{
-        opacity:1;
+    to {
+        opacity: 1;
+
         transform:
             translateY(0);
     }
 }
 
-@keyframes textAppear{
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0);
-    }
-}
-
-@keyframes flowerFloat{
-
-    0%,100%{
+@keyframes flowerFloat {
+    0%,100% {
         transform:
             translateY(0)
             rotate(-4deg);
     }
 
-    50%{
+    50% {
         transform:
             translateY(-8px)
             rotate(4deg);
     }
 }
 
-@keyframes musicPulse{
-
-    0%,100%{
-        transform:scale(1);
+@keyframes musicPulse {
+    0%,100% {
+        transform: scale(1);
     }
 
-    50%{
-        transform:scale(1.08);
+    50% {
+        transform: scale(1.08);
     }
 }
 
-@keyframes stickerFloat{
-
-    0%,100%{
+@keyframes stickerFloat {
+    0%,100% {
         transform:
             translateY(0)
             rotate(-2deg);
     }
 
-    50%{
+    50% {
         transform:
             translateY(-10px)
             rotate(2deg);
     }
 }
 
-@keyframes tulipFloat{
-
-    0%{
+@keyframes tulipFloat {
+    0% {
         transform:
             translateY(0)
             rotate(-8deg);
 
-        opacity:0;
+        opacity: 0;
     }
 
-    15%{
-        opacity:.75;
+    15% {
+        opacity: .75;
     }
 
-    50%{
+    50% {
         transform:
             translateY(-50vh)
             rotate(8deg);
     }
 
-    100%{
+    100% {
         transform:
             translateY(-115vh)
             rotate(-12deg);
 
-        opacity:0;
-    }
-}
-
-@keyframes sparkleFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            scale(1);
-
-        opacity:.4;
-    }
-
-    50%{
-        transform:
-            translateY(-15px)
-            scale(1.3);
-
-        opacity:.9;
+        opacity: 0;
     }
 }
 
@@ -841,114 +726,95 @@ body{
    MOBILE
 ========================= */
 
-@media(max-width:700px){
+@media(max-width:700px) {
 
-    #letterPage{
-
+    #letterPage {
         padding:
             20px
             10px
             70px;
     }
 
-    .letter{
-
+    .letter {
         padding:
             30px 22px;
 
-        border-radius:20px;
+        border-radius: 20px;
     }
 
-    .letter-title{
-
-        font-size:29px;
+    .letter-title {
+        font-size: 29px;
     }
 
-    .letter p{
+    .letter p {
+        font-size: 16px;
 
-        font-size:16px;
+        line-height: 1.85;
 
-        line-height:1.85;
-
-        text-align:left;
+        text-align: left;
     }
 
-    .music-card{
-
-        padding:16px;
+    .music-card {
+        padding: 16px;
     }
 
-    .song-name{
-
-        font-size:16px;
+    .song-name {
+        font-size: 16px;
     }
 
-    .music-icon{
+    .music-icon {
+        width: 55px;
+        height: 55px;
 
-        width:55px;
-        height:55px;
-
-        min-width:55px;
+        min-width: 55px;
     }
 
-    #playButton{
+    #playButton {
+        width: 46px;
+        height: 46px;
 
-        width:46px;
-        height:46px;
-
-        min-width:46px;
+        min-width: 46px;
     }
 
-    /*
-       Hide side stickers on small
-       screens so they don't cover
-       the letter.
-    */
+    .side-sticker {
+        opacity: .25;
 
-    .side-sticker{
-
-        opacity:.18;
-
-        width:75px;
+        width: 70px;
     }
 
-    .courage-left{
+    .courage-left {
+        left: -15px;
 
-        left:-20px;
-
-        top:30%;
+        top: 30%;
     }
 
-    .bunny-right{
+    .bunny-right {
+        right: -15px;
 
-        right:-20px;
-
-        top:65%;
+        top: 65%;
     }
 
-    .tulip-corner{
-
-        font-size:45px;
+    .tulip-corner {
+        font-size: 45px;
     }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     OPENING
-========================= -->
+<!-- =====================================================
+     PASSWORD SCREEN
+====================================================== -->
 
-<section id="opening">
+<section id="passwordScreen">
 
-    <div class="open-box">
+    <div class="password-box">
 
-        <div class="open-flower">
+        <div class="password-flower">
             🌷
         </div>
 
@@ -958,11 +824,29 @@ body{
 
         <p>
             May isang bagay akong gustong sabihin...
+            <br>
+            Enter the code to open the letter.
         </p>
 
-        <button id="openButton">
-            Open Letter
+        <input
+            type="password"
+            id="passwordInput"
+            class="password-input"
+            placeholder="Enter the code"
+            autocomplete="off"
+        >
+
+        <button
+            class="unlock-button"
+            id="unlockButton"
+        >
+            🔐 Unlock Letter
         </button>
+
+        <div
+            id="errorMessage"
+            class="error-message"
+        ></div>
 
     </div>
 
@@ -970,29 +854,32 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================================
      LETTER PAGE
-========================= -->
+====================================================== -->
 
 <section id="letterPage">
 
 
-    <!-- SIDE STICKERS -->
+    <!-- LEFT IMAGE -->
 
     <img
         src="courage.png"
         class="side-sticker courage-left"
-        alt="Pink Courage sticker"
+        alt="Pink cartoon"
     >
+
+
+    <!-- RIGHT IMAGE -->
 
     <img
         src="bunny.png"
         class="side-sticker bunny-right"
-        alt="Pink bunny sticker"
+        alt="Pink bunny"
     >
 
 
-    <!-- TULIP CORNERS -->
+    <!-- TULIPS -->
 
     <div class="tulip-corner tulip-left">
         🌷🌷
@@ -1006,7 +893,6 @@ body{
     <!-- LETTER -->
 
     <div class="letter">
-
 
         <h1 class="letter-title">
             sardinesPoorevah
@@ -1047,7 +933,10 @@ body{
 
             <div class="music-controls">
 
-                <button id="playButton">
+                <button
+                    id="playButton"
+                    title="Play / Pause"
+                >
                     ▶
                 </button>
 
@@ -1085,7 +974,7 @@ body{
             >
 
                 <source
-                    src="music.mp3"
+                    src="Panaginip - nicole (Lyrics).mp3"
                     type="audio/mpeg"
                 >
 
@@ -1094,60 +983,66 @@ body{
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
              MESSAGE
-        ========================== -->
+        ================================================== -->
 
         <p>
-            Patawad unang una sa lahat.. may dahilan ang aking katahimikan at pag iwas,
-            tumopad lang ako sa usapan na hayaan na daw muna kita hanggang sa makapagtapos..
-            hanggang sa nakikita ko na masaya at nasa mabuti ka, at ayoko ko nang sirain uli yon
-            at bilang respeto sa lahat ng mga nagmamahal sayo, malake ang respeto ko sa buong
-            pamilya mo,. at sa tingin ko yon ang mas mahirap tanggapin o gawin, wala akong
-            Karapatan.
+            Patawad unang una sa lahat.. may dahilan ang aking
+            katahimikan at pag iwas, tumopad lang ako sa usapan
+            na hayaan na daw muna kita hanggang sa makapagtapos..
+            hanggang sa nakikita ko na masaya at nasa mabuti ka,
+            at ayoko ko nang sirain uli yon at bilang respeto sa
+            lahat ng mga nagmamahal sayo, malake ang respeto ko
+            sa buong pamilya mo,. at sa tingin ko yon ang mas
+            mahirap tanggapin o gawin, wala akong Karapatan.
         </p>
 
         <p>
-            Ayokong sirain ang potensyal mo, dahil maraming taong naniniwala sayo na
-            "malayo ang mararating mo."
+            Ayokong sirain ang potensyal mo, dahil maraming taong
+            naniniwala sayo na "malayo ang mararating mo."
         </p>
 
         <p>
-            Patawad sa pagiging mahina ko.... wala ako sa normal na ako sa mga panahon nayon,
-            sa totoo lang wala akong natandaan sa mga nangyare satin non, hanggang sa..
+            Patawad sa pagiging mahina ko.... wala ako sa normal
+            na ako sa mga panahon nayon, sa totoo lang wala akong
+            natandaan sa mga nangyare satin non, hanggang sa..
             siguro "nagising" nadugtong-dugtong ko nalang....
         </p>
 
         <p>
-            Hindi pala sa sinasabe ko na ako ang tama, wala akong galit.
-            Kung meron man siguro tampo .. matagal ko narin pala nasulat to at gustong
-            sabihin o ibigay ng personal heheh (may prof.)...
+            Hindi pala sa sinasabe ko na ako ang tama, wala akong
+            galit. Kung meron man siguro tampo .. matagal ko narin
+            pala nasulat to at gustong sabihin o ibigay ng personal
+            heheh (may prof.)...
         </p>
 
         <p>
-            Pasensya kung di manlang mas nakilala ng husto,{ basta ito nalang ,
-            hindi sa pag mamayabang (dahil Kahit kailan parang mortal sin sakin yon heheh),
-            yong palagi kung pagpapatawa o yumor sa jokes (on the spot)/humble kahit yon lang
-            ayokong mag mukhang sobrang galing hahah siguro ihalintulad kahit kunti nalang o
-            hahah kay Ranchoddas Chanchad, pasensya na kung nasingit pa to heheh}.......
+            Pasensya kung di manlang mas nakilala ng husto,{
+            basta ito nalang , hindi sa pag mamayabang (dahil
+            Kahit kailan parang mortal sin sakin yon heheh),
+            yong palagi kung pagpapatawa o yumor sa jokes
+            (on the spot)/humble kahit yon lang ayokong mag mukhang
+            sobrang galing hahah siguro ihalintulad kahit kunti
+            nalang o hahah kay Ranchoddas Chanchad, pasensya na
+            kung nasingit pa to heheh}.......
         </p>
 
         <p>
             Nangibabaw sa akin ang hiya at pagiging di handa.
-            Kasalanan ko lahat.. hindi balewala sakin lahat kung alam mo lang,..
-            isa ka sa mga naging inspirasyon ko kung bat nag papatuloy,
-            kasama ka sa mga panalangin na naway nasa mabuti ka palagi.
+            Kasalanan ko lahat.. hindi balewala sakin lahat kung
+            alam mo lang,.. isa ka sa mga naging inspirasyon ko
+            kung bat nag papatuloy, kasama ka sa mga panalangin
+            na naway nasa mabuti ka palagi.
         </p>
 
         <p>
             Ito na ang unat huli. patawad.. patawad.
         </p>
 
-
         <p class="signature">
             -Phunsukh Wangdu
         </p>
-
 
         <div class="footer">
             Salamat sa lahat ng maganda. ♥
@@ -1161,25 +1056,126 @@ body{
 
 <script>
 
+/* =====================================================
+   PASSWORD
+====================================================== */
 
-/* =========================
-   ELEMENTS
-========================= */
+/* PASSWORD: inah */
 
-const openButton =
+const correctPassword = "inah";
+
+const passwordScreen =
     document.getElementById(
-        "openButton"
+        "passwordScreen"
     );
 
-const opening =
+const passwordInput =
     document.getElementById(
-        "opening"
+        "passwordInput"
+    );
+
+const unlockButton =
+    document.getElementById(
+        "unlockButton"
+    );
+
+const errorMessage =
+    document.getElementById(
+        "errorMessage"
     );
 
 const letterPage =
     document.getElementById(
         "letterPage"
     );
+
+
+function unlockLetter() {
+
+    const enteredPassword =
+        passwordInput.value.trim();
+
+    if (
+        enteredPassword ===
+        correctPassword
+    ) {
+
+        passwordScreen.style.display =
+            "none";
+
+        letterPage.style.display =
+            "block";
+
+        window.scrollTo(
+            0,
+            0
+        );
+
+        /*
+         * Music attempts to play
+         * after the user clicks Unlock.
+         */
+
+        music.play()
+        .then(function() {
+
+            playButton.textContent =
+                "❚❚";
+
+            musicIcon.classList.add(
+                "playing"
+            );
+
+        })
+        .catch(function() {
+
+            playButton.textContent =
+                "▶";
+
+        });
+
+    }
+
+    else {
+
+        errorMessage.textContent =
+            "Incorrect code. Please try again.";
+
+        passwordInput.value = "";
+
+        passwordInput.focus();
+
+    }
+
+}
+
+
+unlockButton.addEventListener(
+    "click",
+    unlockLetter
+);
+
+
+passwordInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Enter"
+        ) {
+
+            unlockLetter();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   MUSIC PLAYER
+====================================================== */
 
 const music =
     document.getElementById(
@@ -1212,62 +1208,19 @@ const duration =
     );
 
 
-/* =========================
-   OPEN LETTER
-========================= */
-
-openButton.addEventListener(
-    "click",
-    function(){
-
-        opening.style.display =
-            "none";
-
-        letterPage.style.display =
-            "block";
-
-
-        /*
-           Browser allows music
-           because this action comes
-           directly from the button click.
-        */
-
-        music.play()
-        .then(function(){
-
-            playButton.textContent =
-                "❚❚";
-
-            musicIcon.classList.add(
-                "playing"
-            );
-
-        })
-        .catch(function(){
-
-            playButton.textContent =
-                "▶";
-
-        });
-
-    }
-);
-
-
-/* =========================
-   PLAY / PAUSE
-========================= */
-
 playButton.addEventListener(
     "click",
-    function(){
+    function() {
 
-        if(music.paused){
+        if (
+            music.paused
+        ) {
 
             music.play();
 
-        }else{
+        }
+
+        else {
 
             music.pause();
 
@@ -1277,13 +1230,9 @@ playButton.addEventListener(
 );
 
 
-/* =========================
-   PLAY EVENT
-========================= */
-
 music.addEventListener(
     "play",
-    function(){
+    function() {
 
         playButton.textContent =
             "❚❚";
@@ -1296,13 +1245,9 @@ music.addEventListener(
 );
 
 
-/* =========================
-   PAUSE EVENT
-========================= */
-
 music.addEventListener(
     "pause",
-    function(){
+    function() {
 
         playButton.textContent =
             "▶";
@@ -1315,14 +1260,14 @@ music.addEventListener(
 );
 
 
-/* =========================
-   TIME FORMAT
-========================= */
+function formatTime(seconds) {
 
-function formatTime(seconds){
+    if (
+        isNaN(seconds)
+    ) {
 
-    if(isNaN(seconds)){
         return "0:00";
+
     }
 
     const minutes =
@@ -1345,16 +1290,13 @@ function formatTime(seconds){
         ) +
         secs
     );
+
 }
 
 
-/* =========================
-   SONG DURATION
-========================= */
-
 music.addEventListener(
     "loadedmetadata",
-    function(){
+    function() {
 
         duration.textContent =
             formatTime(
@@ -1365,21 +1307,21 @@ music.addEventListener(
 );
 
 
-/* =========================
-   MUSIC PROGRESS
-========================= */
-
 music.addEventListener(
     "timeupdate",
-    function(){
+    function() {
 
-        if(music.duration){
+        if (
+            music.duration
+        ) {
 
             progress.value =
                 (
                     music.currentTime /
                     music.duration
-                ) * 100;
+                ) *
+                100;
+
         }
 
         currentTime.textContent =
@@ -1391,15 +1333,13 @@ music.addEventListener(
 );
 
 
-/* =========================
-   SEEK
-========================= */
-
 progress.addEventListener(
     "input",
-    function(){
+    function() {
 
-        if(music.duration){
+        if (
+            music.duration
+        ) {
 
             music.currentTime =
                 (
@@ -1407,17 +1347,18 @@ progress.addEventListener(
                     100
                 ) *
                 music.duration;
+
         }
 
     }
 );
 
 
-/* =========================
+/* =====================================================
    FLOATING TULIPS
-========================= */
+====================================================== */
 
-function createTulip(){
+function createTulip() {
 
     const tulip =
         document.createElement(
@@ -1431,20 +1372,23 @@ function createTulip(){
         "🌷";
 
     tulip.style.left =
-        Math.random() * 100 +
+        Math.random() *
+        100 +
         "vw";
 
     tulip.style.fontSize =
         (
             18 +
-            Math.random() * 15
+            Math.random() *
+            15
         ) +
         "px";
 
     tulip.style.animationDuration =
         (
             6 +
-            Math.random() * 5
+            Math.random() *
+            5
         ) +
         "s";
 
@@ -1453,74 +1397,20 @@ function createTulip(){
     );
 
     setTimeout(
-        function(){
+        function() {
 
             tulip.remove();
 
         },
         11000
     );
+
 }
 
-
-/* Start tulips */
 
 setInterval(
     createTulip,
     1500
-);
-
-
-/* =========================
-   SPARKLES
-========================= */
-
-function createSparkle(){
-
-    const sparkle =
-        document.createElement(
-            "div"
-        );
-
-    sparkle.className =
-        "sparkle";
-
-    sparkle.textContent =
-        "✦";
-
-    sparkle.style.left =
-        Math.random() * 100 +
-        "vw";
-
-    sparkle.style.top =
-        Math.random() * 100 +
-        "vh";
-
-    sparkle.style.animationDuration =
-        (
-            3 +
-            Math.random() * 3
-        ) +
-        "s";
-
-    document.body.appendChild(
-        sparkle
-    );
-
-    setTimeout(
-        function(){
-
-            sparkle.remove();
-
-        },
-        6000
-    );
-}
-
-
-setInterval(
-    createSparkle,
-    1000
 );
 
 </script>
