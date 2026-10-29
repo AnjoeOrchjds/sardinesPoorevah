@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -265,21 +264,8 @@
       z-index: 1;
       width: min(90%, 700px);
       margin: 0 auto;
-      padding: 55px 0 20px;
+      padding: 35px 0 20px;
       text-align: center;
-    }
-
-    .letter-container > h1 {
-      font-size: clamp(30px, 6vw, 45px);
-      margin-bottom: 10px;
-      color: #b83262;
-      text-shadow: 1px 2px 4px #fff;
-    }
-
-    .subtitle {
-      font-size: 16px;
-      margin-bottom: 25px;
-      color: #98516d;
     }
 
     .letter-card {
@@ -294,14 +280,11 @@
       text-align: left;
       line-height: 1.9;
       font-size: 17px;
-      white-space: pre-line;
     }
 
-    .letter h2 {
-      text-align: center;
-      color: #c13e70;
-      margin-top: 0;
-      margin-bottom: 25px;
+    .letter p {
+      margin: 0 0 22px;
+      white-space: pre-line;
     }
 
     .signature {
@@ -311,21 +294,97 @@
       color: #b83262;
     }
 
+    /* MUSIC PLAYER */
+
     .music-box {
-      margin-top: 22px;
-      padding: 16px;
-      border-radius: 16px;
-      background: #fff0f6;
-      border: 1px dashed #e8a1bd;
+      margin: 0 0 28px;
+      padding: 17px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #fff4f8, #ffe5ef);
+      border: 1px solid #f1b5cc;
+      box-shadow: 0 5px 14px rgba(177, 67, 108, 0.09);
+      text-align: left;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .music-box p {
-      margin-top: 0;
+    .music-heading {
+      text-align: center;
+      color: #b83262;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
     }
 
-    .music-box audio {
+    .custom-player {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .album-art {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #f6a8c5, #d94f83);
+      color: white;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(177, 67, 108, 0.2);
+    }
+
+    .track-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .track-info strong,
+    .track-info span {
+      display: block;
+    }
+
+    .track-info strong {
+      color: #7b2948;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .track-info span {
+      color: #a65a78;
+      font-size: 12px;
+    }
+
+    .music-progress {
       width: 100%;
-      max-width: 420px;
+      margin: 10px 0 2px;
+      accent-color: #d94f83;
+      cursor: pointer;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      color: #a65a78;
+      font-size: 10px;
+    }
+
+    .play-button {
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      border: none;
+      border-radius: 50%;
+      background: #d94f83;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(177, 67, 108, 0.2);
+    }
+
+    .play-button:hover {
+      background: #b83262;
+      transform: scale(1.04);
     }
 
     .close-button {
@@ -343,12 +402,6 @@
       background: #b83262;
     }
 
-    .letter-footer {
-      margin-top: 25px;
-      font-size: 13px;
-      color: #a65a78;
-    }
-
     .tulip {
       position: fixed;
       bottom: -40px;
@@ -364,12 +417,15 @@
         transform: translateY(0) rotate(0deg);
         opacity: 0;
       }
+
       10% {
         opacity: 0.7;
       }
+
       90% {
         opacity: 0.6;
       }
+
       100% {
         transform: translateY(-110vh) rotate(35deg);
         opacity: 0;
@@ -424,7 +480,7 @@
 
       .letter-container {
         width: 92%;
-        padding-top: 70px;
+        padding-top: 45px;
       }
 
       .letter-card {
@@ -444,20 +500,24 @@
 
 <body>
 
-  <!-- SAKADA CAREERS HEADER AND CUSTOM LOGO -->
-  <section id="passwordSection">
-    <header class="topbar">
+  <!-- SAKADA CAREERS LOGIN PAGE -->
 
+  <section id="passwordSection">
+
+    <header class="topbar">
       <div class="brand">
+
         <div class="logo-mark" aria-label="Sakada Careers logo">
           <svg viewBox="0 0 40 40" fill="none"
                xmlns="http://www.w3.org/2000/svg">
+
             <path
               d="M13 12V9.5C13 8.1 14.1 7 15.5 7H24.5C25.9 7 27 8.1 27 9.5V12"
               stroke="#14243d"
               stroke-width="2.8"
               stroke-linecap="round"
             />
+
             <rect
               x="5"
               y="12"
@@ -467,11 +527,13 @@
               stroke="#14243d"
               stroke-width="2.8"
             />
+
             <path
               d="M5 21H35"
               stroke="#14243d"
               stroke-width="2.5"
             />
+
             <path
               d="M16 20V23H24V20"
               stroke="#14243d"
@@ -479,6 +541,7 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
+
             <path
               d="M12 27L16 30L23 24"
               stroke="#14243d"
@@ -486,6 +549,7 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
+
           </svg>
         </div>
 
@@ -493,6 +557,7 @@
           <span>SAKADA CAREERS</span>
           <small>OPPORTUNITIES AWAIT</small>
         </div>
+
       </div>
 
       <div class="topbar-label">Applicant Portal</div>
@@ -517,6 +582,7 @@
       </p>
 
       <form id="passwordForm">
+
         <label class="field-label" for="passwordInput">
           Nickname
         </label>
@@ -536,6 +602,7 @@
         </button>
 
         <p id="error" aria-live="polite"></p>
+
       </form>
 
       <div class="secure-note">
@@ -547,67 +614,113 @@
     <div class="login-footer">
       © 2026 Sakada Careers. All rights reserved.
     </div>
+
   </section>
 
-  <!-- THE SURPRISE LETTER -->
+  <!-- SURPRISE LETTER PAGE -->
+
   <section id="letterSection">
+
     <div class="corner-tulip top-left">🌷</div>
     <div class="corner-tulip top-right">🌷</div>
     <div class="corner-tulip bottom-left">🌷</div>
     <div class="corner-tulip bottom-right">🌷</div>
 
     <main class="letter-container">
-      <h1>sardinesPoorevah 🌷</h1>
-      <p class="subtitle">A little letter from my heart, just for you. ♡</p>
 
       <div class="letter-card">
-        <div class="letter">
-          <h2>To someone special ♡</h2>
 
-          Hi,
-
-          I just want to take this moment to say the things that have been sitting in my heart.
-
-          I'm sorry for the times I hurt you, for the things I said or did that made you feel sad, and for the moments when I failed to understand you. I know that saying sorry cannot instantly fix everything, but I hope you know that I mean it sincerely.
-
-          I never wanted to make you feel like you weren't important, because you are. I'm still learning how to be better, how to understand you more, and how to show my feelings in a way that you deserve.
-
-          I know I cannot change what has already happened, but I can learn from it. I want to become a better person, not just through my words but through my actions too.
-
-          Thank you for the moments we've shared, for your patience, and for the memories that mean so much to me. Whatever happens, I hope you know that I genuinely wish you happiness and peace.
-
-          I'm sorry for my shortcomings. I hope that, someday, my actions can speak louder than my mistakes.
-
-          Please take care of yourself always. You deserve kindness, happiness, and all the good things life has to offer.
-
-          <div class="signature">
-            With a sincere heart,<br>
-            -Phunsukh Wangdu
-          </div>
-        </div>
+        <!-- MUSIC PLAYER ABOVE THE LETTER -->
 
         <div class="music-box">
-          <p>🎵 A little song for you 🎵</p>
 
-          <audio id="myMusic" controls loop preload="metadata">
-            <source src="Panaginip - nicole (Lyrics).mp3" type="audio/mpeg">
+          <div class="music-heading">
+            ♫ A song for you ♡
+          </div>
+
+          <div class="custom-player">
+
+            <div class="album-art" aria-hidden="true">
+              ♫
+            </div>
+
+            <div class="track-info">
+              <strong>Panaginip</strong>
+              <span>Nicole</span>
+
+              <input
+                id="musicProgress"
+                class="music-progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="Song progress"
+              >
+
+              <div class="time-row">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              id="playButton"
+              class="play-button"
+              aria-label="Play music"
+            >
+              ▶
+            </button>
+
+          </div>
+
+          <audio id="myMusic" loop preload="metadata">
+            <source
+              src="Panaginip - nicole (Lyrics).mp3"
+              type="audio/mpeg"
+            >
             Your browser does not support audio playback.
           </audio>
 
-          <p style="font-size: 12px; margin: 10px 0 0;">
-            Press play to listen to the song. ♡
-          </p>
         </div>
 
-        <button type="button" id="closeButton" class="close-button">
+        <!-- ORIGINAL TAGALOG LETTER -->
+
+        <div class="letter">
+
+          <p>Patawad unang una sa lahat.. may dahilan ang aking katahimikan at pag iwas, tumopad lang ako sa usapan na hayaan na daw muna kita hanggang sa makapagtapos.. hanggang sa nakikita ko na masaya at nasa mabuti ka, at ayoko ko nang sirain uli yon at bilang respeto sa lahat ng mga nagmamahal sayo, malake ang respeto ko sa buong pamilya mo,. at sa tingin ko yon ang mas mahirap tanggapin o gawin, wala akong Karapatan.</p>
+
+          <p>Ayokong sirain ang potensyal mo, dahil maraming taong naniniwala sayo na "malayo ang mararating mo."</p>
+
+          <p>Patawad sa pagiging mahina ko.... wala ako sa normal na ako sa mga panahon nayon, sa totoo lang wala akong natandaan sa mga nangyare satin non, hanggang sa.. siguro "nagising" nadugtong-dugtong ko nalang....</p>
+
+          <p>Hindi pala sa sinasabe ko na ako ang tama, wala akong galit. Kung meron man siguro tampo .. matagal ko narin pala nasulat to at gustong sabihin o ibigay ng personal heheh (may prof.)...</p>
+
+          <p>Pasensya kung di manlang mas nakilala ng husto,{ basta ito nalang , hindi sa pag mamayabang (dahil Kahit kailan parang mortal sin sakin yon heheh), yong palagi kung pagpapatawa o yumor sa jokes (on the spot)/humble kahit yon lang ayokong mag mukhang sobrang galing hahah siguro ihalintulad kahit kunti nalang o hahah kay Ranchoddas Chanchad, pasensya na kung nasingit pa to heheh}.......</p>
+
+          <p>Nangibabaw sa akin ang hiya at pagiging di handa. Kasalanan ko lahat.. hindi balewala sakin lahat kung alam mo lang,.. isa ka sa mga naging inspirasyon ko kung bat nag papatuloy, kasama ka sa mga panalangin na naway nasa mabuti ka palagi.</p>
+
+          <p>Ito na ang unat huli. patawad.. patawad.</p>
+
+          <div class="signature">
+            -Phunsukh Wangdu ♡
+          </div>
+
+        </div>
+
+        <button
+          type="button"
+          id="closeButton"
+          class="close-button"
+        >
           Close letter 💌
         </button>
+
       </div>
 
-      <p class="letter-footer">
-        Made with love and a little bit of courage. 🌷
-      </p>
     </main>
+
   </section>
 
   <script>
@@ -618,8 +731,79 @@
     const passwordSection = document.getElementById("passwordSection");
     const letterSection = document.getElementById("letterSection");
     const errorMessage = document.getElementById("error");
+
     const music = document.getElementById("myMusic");
     const closeButton = document.getElementById("closeButton");
+    const playButton = document.getElementById("playButton");
+
+    const musicProgress = document.getElementById("musicProgress");
+    const currentTimeLabel = document.getElementById("currentTime");
+    const durationLabel = document.getElementById("duration");
+
+    /* FORMAT SONG TIME */
+
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) {
+        return "0:00";
+      }
+
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60)
+        .toString()
+        .padStart(2, "0");
+
+      return mins + ":" + secs;
+    }
+
+    /* PLAY AND PAUSE MUSIC */
+
+    playButton.addEventListener("click", function() {
+      if (music.paused) {
+        music.play().catch(function() {
+          console.log("Unable to play the music.");
+        });
+      } else {
+        music.pause();
+      }
+    });
+
+    music.addEventListener("play", function() {
+      playButton.textContent = "Ⅱ";
+      playButton.setAttribute("aria-label", "Pause music");
+    });
+
+    music.addEventListener("pause", function() {
+      playButton.textContent = "▶";
+      playButton.setAttribute("aria-label", "Play music");
+    });
+
+    /* DISPLAY SONG DURATION */
+
+    music.addEventListener("loadedmetadata", function() {
+      durationLabel.textContent = formatTime(music.duration);
+    });
+
+    /* UPDATE MUSIC PROGRESS */
+
+    music.addEventListener("timeupdate", function() {
+      currentTimeLabel.textContent = formatTime(music.currentTime);
+
+      if (Number.isFinite(music.duration) && music.duration > 0) {
+        musicProgress.value =
+          (music.currentTime / music.duration) * 100;
+      }
+    });
+
+    /* ALLOW SEEKING THROUGH THE SONG */
+
+    musicProgress.addEventListener("input", function() {
+      if (Number.isFinite(music.duration) && music.duration > 0) {
+        music.currentTime =
+          (Number(musicProgress.value) / 100) * music.duration;
+      }
+    });
+
+    /* LOGIN */
 
     passwordForm.addEventListener("submit", function(event) {
       event.preventDefault();
@@ -628,28 +812,46 @@
         passwordInput.value.trim().toLowerCase();
 
       if (enteredNickname === correctPassword) {
+
         passwordSection.style.display = "none";
         letterSection.style.display = "block";
-        document.title = "sardinesPoorevah 🌷";
+
+        document.title = "A letter for you ♡";
         errorMessage.textContent = "";
 
+        /* TRY TO PLAY MUSIC AUTOMATICALLY */
+
         music.play().catch(function() {
-          // Press Play manually if the browser blocks autoplay.
+          // Click the Play button if autoplay is blocked.
         });
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
       } else {
+
         errorMessage.textContent =
           "Nickname not recognized. Please try again.";
 
         passwordInput.value = "";
         passwordInput.focus();
+
       }
     });
 
+    /* CLOSE LETTER AND RETURN TO LOGIN */
+
     closeButton.addEventListener("click", function() {
+
       music.pause();
       music.currentTime = 0;
+
+      playButton.textContent = "▶";
+      musicProgress.value = 0;
+
+      currentTimeLabel.textContent = "0:00";
 
       letterSection.style.display = "none";
       passwordSection.style.display = "block";
@@ -660,13 +862,22 @@
       passwordInput.value = "";
       errorMessage.textContent = "";
 
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
     });
+
+    /* FLOATING TULIPS AND HEARTS */
 
     const tulipEmojis = ["🌷", "🌸", "💗"];
 
     function createTulip() {
-      if (letterSection.style.display !== "block") return;
+
+      if (letterSection.style.display !== "block") {
+        return;
+      }
 
       const tulip = document.createElement("div");
       tulip.className = "tulip";
@@ -677,6 +888,7 @@
         ];
 
       tulip.style.left = Math.random() * 100 + "vw";
+
       tulip.style.animationDuration =
         (7 + Math.random() * 6) + "s";
 
@@ -688,6 +900,7 @@
       setTimeout(function() {
         tulip.remove();
       }, 14000);
+
     }
 
     setInterval(createTulip, 1200);
