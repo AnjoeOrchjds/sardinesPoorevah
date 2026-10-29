@@ -1,1419 +1,697 @@
+
 <!DOCTYPE html>
-<html lang="tl">
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>sardinesPoorevah</title>
-
-<style>
-
-/* =========================
-   GENERAL
-========================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    color: #542c3b;
-
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(255,255,255,.9),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(255,190,215,.7),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #ffdce9,
-            #fff2f7
-        );
-
-    overflow-x: hidden;
-}
-
-
-/* =========================
-   PASSWORD SCREEN
-========================= */
-
-#passwordScreen {
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-
-    text-align: center;
-}
-
-.password-box {
-    width: 100%;
-    max-width: 430px;
-
-    padding: 50px 35px;
-
-    background: rgba(255,255,255,.97);
-
-    border: 1px solid #f3b8d0;
-
-    border-radius: 30px;
-
-    box-shadow:
-        0 20px 60px
-        rgba(190,70,110,.20);
-
-    animation: appear 1s ease;
-}
-
-.password-flower {
-    font-size: 65px;
-
-    margin-bottom: 10px;
-
-    animation:
-        flowerFloat 3s ease-in-out infinite;
-}
-
-.password-box h1 {
-    margin: 0 0 10px;
-
-    color: #d34f80;
-
-    font-size: 34px;
-
-    font-weight: normal;
-}
-
-.password-box p {
-    color: #956477;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
-    margin-bottom: 25px;
-}
-
-.password-input {
-    width: 100%;
-
-    padding: 15px 18px;
-
-    border: 1px solid #efb3ca;
-
-    border-radius: 15px;
-
-    outline: none;
-
-    text-align: center;
-
-    font-size: 17px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    color: #733c51;
-
-    background: #fff8fb;
-
-    transition: .25s ease;
-}
-
-.password-input:focus {
-    border-color: #dc6190;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(220,97,144,.10);
-}
-
-.unlock-button {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 30px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ed70a0,
-            #d85184
-        );
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 22px
-        rgba(190,70,110,.25);
-
-    transition: .3s ease;
-}
-
-.unlock-button:hover {
-    transform:
-        translateY(-2px)
-        scale(1.02);
-}
-
-.error-message {
-    min-height: 22px;
-
-    margin-top: 15px;
-
-    color: #d34f80;
-
-    font-size: 14px;
-}
-
-
-/* =========================
-   LETTER PAGE
-========================= */
-
-#letterPage {
-    display: none;
-
-    min-height: 100vh;
-
-    padding:
-        45px 20px
-        100px;
-
-    position: relative;
-}
-
-.letter {
-    position: relative;
-
-    z-index: 2;
-
-    width: 100%;
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 55px;
-
-    background:
-        rgba(
-            255,
-            253,
-            254,
-            .97
-        );
-
-    border:
-        1px solid #f2bdd2;
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 15px 50px
-        rgba(190,70,110,.15);
-
-    animation:
-        letterAppear 1.2s ease;
-}
-
-
-/* =========================
-   TITLE
-========================= */
-
-.letter-title {
-    text-align: center;
-
-    color: #d64e80;
-
-    font-size: 40px;
-
-    font-weight: normal;
-
-    margin:
-        5px 0
-        8px;
-}
-
-.title-decoration {
-    text-align: center;
-
-    color: #e75f91;
-
-    font-size: 22px;
-
-    margin-bottom: 35px;
-}
-
-
-/* =========================
-   MUSIC PLAYER
-========================= */
-
-.music-card {
-    max-width: 590px;
-
-    margin:
-        0 auto
-        45px;
-
-    padding: 20px;
-
-    border:
-        1px solid #f1b7cf;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f6,
-            #ffe0ec
-        );
-
-    box-shadow:
-        0 10px 30px
-        rgba(190,70,110,.12);
-}
-
-.music-info {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 18px;
-}
-
-.music-icon {
-    width: 62px;
-    height: 62px;
-
-    min-width: 62px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 18px;
-
-    color: white;
-
-    font-size: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ed72a1,
-            #d95486
-        );
-
-    box-shadow:
-        0 7px 18px
-        rgba(190,70,110,.20);
-}
-
-.music-icon.playing {
-    animation:
-        musicPulse 1.5s infinite;
-}
-
-.song-name {
-    color: #a83d68;
-
-    font-size: 19px;
-
-    font-weight: bold;
-}
-
-.artist {
-    color: #9a7181;
-
-    font-size: 14px;
-
-    margin-top: 4px;
-}
-
-.music-controls {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-}
-
-#playButton {
-    width: 50px;
-    height: 50px;
-
-    min-width: 50px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e96b9b,
-            #d85384
-        );
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    box-shadow:
-        0 7px 18px
-        rgba(190,70,110,.25);
-
-    transition: .25s ease;
-}
-
-#playButton:hover {
-    transform: scale(1.08);
-}
-
-.progress-area {
-    flex: 1;
-}
-
-#progress {
-    width: 100%;
-
-    height: 6px;
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    background: #f2bdd1;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-}
-
-#progress::-webkit-slider-thumb {
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    width: 14px;
-    height: 14px;
-
-    border-radius: 50%;
-
-    background: #e65f91;
-
-    cursor: pointer;
-}
-
-.time {
-    display: flex;
-
-    justify-content: space-between;
-
-    color: #a27888;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    margin-top: 7px;
-}
-
-
-/* =========================
-   LETTER
-========================= */
-
-.letter p {
-    font-size: 17px;
-
-    line-height: 2;
-
-    text-align: justify;
-
-    margin:
-        0 0
-        27px;
-}
-
-.signature {
-    text-align: right !important;
-
-    color: #d85082 !important;
-
-    font-style: italic;
-
-    font-size: 19px !important;
-
-    margin-top: 45px !important;
-}
-
-
-/* =========================
-   SIDE IMAGES
-========================= */
-
-.side-sticker {
-    position: fixed;
-
-    z-index: 1;
-
-    object-fit: contain;
-
-    pointer-events: none;
-
-    filter:
-        drop-shadow(
-            0 8px 10px
-            rgba(170,60,100,.15)
-        );
-
-    animation:
-        stickerFloat
-        4s
-        ease-in-out
-        infinite;
-}
-
-.courage-left {
-    left:
-        max(
-            5px,
-            calc(50% - 610px)
-        );
-
-    top: 45%;
-
-    width: 155px;
-}
-
-.bunny-right {
-    right:
-        max(
-            5px,
-            calc(50% - 610px)
-        );
-
-    top: 45%;
-
-    width: 135px;
-
-    animation-delay:
-        -1.5s;
-}
-
-
-/* =========================
-   TULIPS
-========================= */
-
-.tulip-corner {
-    position: fixed;
-
-    z-index: 1;
-
-    bottom: -5px;
-
-    font-size: 75px;
-
-    line-height: 1;
-
-    opacity: .95;
-
-    pointer-events: none;
-
-    filter:
-        drop-shadow(
-            0 5px 8px
-            rgba(170,70,100,.15)
-        );
-}
-
-.tulip-left {
-    left: 10px;
-}
-
-.tulip-right {
-    right: 10px;
-}
-
-.floating-tulip {
-    position: fixed;
-
-    z-index: 5;
-
-    bottom: -50px;
-
-    pointer-events: none;
-
-    font-size: 22px;
-
-    animation:
-        tulipFloat
-        linear
-        forwards;
-
-    opacity: .75;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-    text-align: center;
-
-    color: #d25282;
-
-    font-size: 15px;
-
-    margin-top: 35px;
-}
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes appear {
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(.96);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Pretending: Career Opportunities</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-@keyframes letterAppear {
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px);
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef1f5;
+      color: #263449;
+      overflow-x: hidden;
     }
 
-    to {
-        opacity: 1;
+    /* SAKADA CAREERS LOGIN PAGE */
 
-        transform:
-            translateY(0);
-    }
-}
-
-@keyframes flowerFloat {
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-4deg);
+    #passwordSection {
+      min-height: 100vh;
+      background: #eef1f5;
     }
 
-    50% {
-        transform:
-            translateY(-8px)
-            rotate(4deg);
-    }
-}
-
-@keyframes musicPulse {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-}
-
-@keyframes stickerFloat {
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-2deg);
+    .topbar {
+      width: 100%;
+      background: #14243d;
+      color: white;
+      padding: 17px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
     }
 
-    50% {
-        transform:
-            translateY(-10px)
-            rotate(2deg);
-    }
-}
-
-@keyframes tulipFloat {
-    0% {
-        transform:
-            translateY(0)
-            rotate(-8deg);
-
-        opacity: 0;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 1px;
     }
 
-    15% {
-        opacity: .75;
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    50% {
-        transform:
-            translateY(-50vh)
-            rotate(8deg);
+    .brand-name span {
+      color: #ffffff;
+      font-size: 20px;
+      letter-spacing: 1.5px;
     }
 
-    100% {
-        transform:
-            translateY(-115vh)
-            rotate(-12deg);
-
-        opacity: 0;
+    .brand-name small {
+      color: #9fb6d4;
+      font-size: 9px;
+      font-weight: normal;
+      letter-spacing: 2.2px;
     }
-}
 
+    .logo-mark {
+      width: 47px;
+      height: 47px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #f4c66a, #d99532);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
 
-/* =========================
-   MOBILE
-========================= */
+    .logo-mark svg {
+      width: 31px;
+      height: 31px;
+    }
 
-@media(max-width:700px) {
+    .topbar-label {
+      font-size: 11px;
+      color: #d6dfeb;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: right;
+    }
 
-    #letterPage {
-        padding:
-            20px
-            10px
-            70px;
+    .job-banner {
+      background: linear-gradient(120deg, #203d63, #315b85);
+      color: white;
+      padding: 48px 20px 58px;
+      text-align: center;
+    }
+
+    .banner-tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 30px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 17px;
+      color: #f4d58d;
+    }
+
+    .job-banner h1 {
+      margin: 0 auto 13px;
+      max-width: 850px;
+      font-size: clamp(27px, 5vw, 40px);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .job-banner p {
+      margin: 0;
+      color: #d9e5f3;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .login-card {
+      width: min(92%, 440px);
+      margin: -27px auto 45px;
+      position: relative;
+      background: white;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(27, 45, 70, 0.13);
+      border: 1px solid #dce2ea;
+    }
+
+    .login-card h2 {
+      font-size: 23px;
+      margin: 0 0 9px;
+      color: #20334e;
+    }
+
+    .login-description {
+      color: #68768a;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .field-label {
+      display: block;
+      text-align: left;
+      font-size: 13px;
+      font-weight: bold;
+      color: #35445a;
+      margin-bottom: 8px;
+    }
+
+    #passwordInput {
+      width: 100%;
+      border: 1px solid #cbd3df;
+      border-radius: 5px;
+      padding: 14px 12px;
+      font-size: 15px;
+      outline: none;
+      background: #fff;
+      color: #263449;
+      margin-bottom: 17px;
+    }
+
+    #passwordInput:focus {
+      border-color: #315e91;
+      box-shadow: 0 0 0 3px rgba(49, 94, 145, 0.12);
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 5px;
+      color: #14243d;
+      background: #e8bb60;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .login-button:hover {
+      background: #dba844;
+      transform: translateY(-1px);
+    }
+
+    #error {
+      color: #b42332;
+      font-size: 13px;
+      min-height: 18px;
+      margin: 12px 0 0;
+    }
+
+    .secure-note {
+      border-top: 1px solid #e6eaf0;
+      margin-top: 23px;
+      padding-top: 17px;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #8792a2;
+      text-align: center;
+    }
+
+    .login-footer {
+      text-align: center;
+      font-size: 12px;
+      color: #7a8798;
+      padding: 0 15px 25px;
+    }
+
+    /* PINK SURPRISE LETTER PAGE */
+
+    #letterSection {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5, #ffd6e4);
+      color: #7b2948;
+      font-family: Georgia, "Times New Roman", serif;
+      padding: 1px 0 35px;
+    }
+
+    .corner-tulip {
+      position: fixed;
+      font-size: 38px;
+      opacity: 0.75;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .top-left {
+      top: 12px;
+      left: 14px;
+      transform: rotate(-20deg);
+    }
+
+    .top-right {
+      top: 12px;
+      right: 14px;
+      transform: rotate(20deg);
+    }
+
+    .bottom-left {
+      bottom: 12px;
+      left: 14px;
+      transform: rotate(15deg);
+    }
+
+    .bottom-right {
+      bottom: 12px;
+      right: 14px;
+      transform: rotate(-15deg);
+    }
+
+    .letter-container {
+      position: relative;
+      z-index: 1;
+      width: min(90%, 700px);
+      margin: 0 auto;
+      padding: 55px 0 20px;
+      text-align: center;
+    }
+
+    .letter-container > h1 {
+      font-size: clamp(30px, 6vw, 45px);
+      margin-bottom: 10px;
+      color: #b83262;
+      text-shadow: 1px 2px 4px #fff;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      margin-bottom: 25px;
+      color: #98516d;
+    }
+
+    .letter-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px solid #ffc1d5;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 8px 25px rgba(177, 67, 108, 0.14);
     }
 
     .letter {
-        padding:
-            30px 22px;
-
-        border-radius: 20px;
+      text-align: left;
+      line-height: 1.9;
+      font-size: 17px;
+      white-space: pre-line;
     }
 
-    .letter-title {
-        font-size: 29px;
+    .letter h2 {
+      text-align: center;
+      color: #c13e70;
+      margin-top: 0;
+      margin-bottom: 25px;
     }
 
-    .letter p {
+    .signature {
+      text-align: right;
+      margin-top: 25px;
+      font-style: italic;
+      color: #b83262;
+    }
+
+    .music-box {
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #fff0f6;
+      border: 1px dashed #e8a1bd;
+    }
+
+    .music-box p {
+      margin-top: 0;
+    }
+
+    .music-box audio {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .close-button {
+      border: none;
+      border-radius: 25px;
+      background: #d94f83;
+      color: white;
+      padding: 12px 24px;
+      margin-top: 20px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      background: #b83262;
+    }
+
+    .letter-footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #a65a78;
+    }
+
+    .tulip {
+      position: fixed;
+      bottom: -40px;
+      font-size: 23px;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp 10s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        padding: 15px 5%;
+      }
+
+      .brand {
+        gap: 9px;
+      }
+
+      .brand-name span {
         font-size: 16px;
+        letter-spacing: 1px;
+      }
 
-        line-height: 1.85;
+      .brand-name small {
+        font-size: 8px;
+        letter-spacing: 1.4px;
+      }
 
-        text-align: left;
-    }
+      .logo-mark {
+        width: 40px;
+        height: 40px;
+      }
 
-    .music-card {
-        padding: 16px;
-    }
+      .logo-mark svg {
+        width: 27px;
+        height: 27px;
+      }
 
-    .song-name {
+      .topbar-label {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .job-banner {
+        padding: 38px 18px 50px;
+      }
+
+      .job-banner h1 {
+        font-size: 28px;
+      }
+
+      .login-card {
+        padding: 25px 21px;
+      }
+
+      .letter-container {
+        width: 92%;
+        padding-top: 70px;
+      }
+
+      .letter-card {
+        padding: 20px 17px;
+      }
+
+      .letter {
         font-size: 16px;
+      }
+
+      .corner-tulip {
+        font-size: 28px;
+      }
     }
-
-    .music-icon {
-        width: 55px;
-        height: 55px;
-
-        min-width: 55px;
-    }
-
-    #playButton {
-        width: 46px;
-        height: 46px;
-
-        min-width: 46px;
-    }
-
-    .side-sticker {
-        opacity: .25;
-
-        width: 70px;
-    }
-
-    .courage-left {
-        left: -15px;
-
-        top: 30%;
-    }
-
-    .bunny-right {
-        right: -15px;
-
-        top: 65%;
-    }
-
-    .tulip-corner {
-        font-size: 45px;
-    }
-}
-
-</style>
+  </style>
 </head>
-
 
 <body>
 
+  <!-- SAKADA CAREERS HEADER AND CUSTOM LOGO -->
+  <section id="passwordSection">
+    <header class="topbar">
 
-<!-- =====================================================
-     PASSWORD SCREEN
-====================================================== -->
-
-<section id="passwordScreen">
-
-    <div class="password-box">
-
-        <div class="password-flower">
-            🌷
+      <div class="brand">
+        <div class="logo-mark" aria-label="Sakada Careers logo">
+          <svg viewBox="0 0 40 40" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M13 12V9.5C13 8.1 14.1 7 15.5 7H24.5C25.9 7 27 8.1 27 9.5V12"
+              stroke="#14243d"
+              stroke-width="2.8"
+              stroke-linecap="round"
+            />
+            <rect
+              x="5"
+              y="12"
+              width="30"
+              height="21"
+              rx="4"
+              stroke="#14243d"
+              stroke-width="2.8"
+            />
+            <path
+              d="M5 21H35"
+              stroke="#14243d"
+              stroke-width="2.5"
+            />
+            <path
+              d="M16 20V23H24V20"
+              stroke="#14243d"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 27L16 30L23 24"
+              stroke="#14243d"
+              stroke-width="2.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
 
-        <h1>
-            sardinesPoorevah
-        </h1>
+        <div class="brand-name">
+          <span>SAKADA CAREERS</span>
+          <small>OPPORTUNITIES AWAIT</small>
+        </div>
+      </div>
 
-        <p>
-            May isang bagay akong gustong sabihin...
-            <br>
-            Enter the code to open the letter.
-        </p>
+      <div class="topbar-label">Applicant Portal</div>
+    </header>
+
+    <div class="job-banner">
+      <div class="banner-tag">CAREER OPPORTUNITIES</div>
+
+      <h1>Professional Pretending: Career Opportunities</h1>
+
+      <p>
+        Welcome to our applicant portal.<br>
+        Sign in below to continue your application.
+      </p>
+    </div>
+
+    <div class="login-card">
+      <h2>Applicant Sign In</h2>
+
+      <p class="login-description">
+        Please enter your registered nickname to access your application.
+      </p>
+
+      <form id="passwordForm">
+        <label class="field-label" for="passwordInput">
+          Nickname
+        </label>
 
         <input
-            type="password"
-            id="passwordInput"
-            class="password-input"
-            placeholder="Enter the code"
-            autocomplete="off"
+          type="text"
+          id="passwordInput"
+          placeholder="nickname mo po, lower case lang heheh"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          required
         >
 
-        <button
-            class="unlock-button"
-            id="unlockButton"
-        >
-            🔐 Unlock Letter
+        <button type="submit" class="login-button">
+          Sign In →
         </button>
 
-        <div
-            id="errorMessage"
-            class="error-message"
-        ></div>
+        <p id="error" aria-live="polite"></p>
+      </form>
 
+      <div class="secure-note">
+        Applicant Access Portal<br>
+        Please make sure your information is entered correctly.
+      </div>
     </div>
 
-</section>
-
-
-
-<!-- =====================================================
-     LETTER PAGE
-====================================================== -->
-
-<section id="letterPage">
-
-
-    <!-- LEFT IMAGE -->
-
-    <img
-        src="courage.png"
-        class="side-sticker courage-left"
-        alt="Pink cartoon"
-    >
-
-
-    <!-- RIGHT IMAGE -->
-
-    <img
-        src="bunny.png"
-        class="side-sticker bunny-right"
-        alt="Pink bunny"
-    >
-
-
-    <!-- TULIPS -->
-
-    <div class="tulip-corner tulip-left">
-        🌷🌷
+    <div class="login-footer">
+      © 2026 Sakada Careers. All rights reserved.
     </div>
+  </section>
 
-    <div class="tulip-corner tulip-right">
-        🌷🌷
-    </div>
+  <!-- THE SURPRISE LETTER -->
+  <section id="letterSection">
+    <div class="corner-tulip top-left">🌷</div>
+    <div class="corner-tulip top-right">🌷</div>
+    <div class="corner-tulip bottom-left">🌷</div>
+    <div class="corner-tulip bottom-right">🌷</div>
 
+    <main class="letter-container">
+      <h1>sardinesPoorevah 🌷</h1>
+      <p class="subtitle">A little letter from my heart, just for you. ♡</p>
 
-    <!-- LETTER -->
+      <div class="letter-card">
+        <div class="letter">
+          <h2>To someone special ♡</h2>
 
-    <div class="letter">
+          Hi,
 
-        <h1 class="letter-title">
-            sardinesPoorevah
-        </h1>
+          I just want to take this moment to say the things that have been sitting in my heart.
 
-        <div class="title-decoration">
-            ── ♥ ──
-        </div>
+          I'm sorry for the times I hurt you, for the things I said or did that made you feel sad, and for the moments when I failed to understand you. I know that saying sorry cannot instantly fix everything, but I hope you know that I mean it sincerely.
 
+          I never wanted to make you feel like you weren't important, because you are. I'm still learning how to be better, how to understand you more, and how to show my feelings in a way that you deserve.
 
-        <!-- MUSIC -->
+          I know I cannot change what has already happened, but I can learn from it. I want to become a better person, not just through my words but through my actions too.
 
-        <div class="music-card">
+          Thank you for the moments we've shared, for your patience, and for the memories that mean so much to me. Whatever happens, I hope you know that I genuinely wish you happiness and peace.
 
-            <div class="music-info">
+          I'm sorry for my shortcomings. I hope that, someday, my actions can speak louder than my mistakes.
 
-                <div
-                    class="music-icon"
-                    id="musicIcon"
-                >
-                    ♫
-                </div>
+          Please take care of yourself always. You deserve kindness, happiness, and all the good things life has to offer.
 
-                <div>
-
-                    <div class="song-name">
-                        Panaginip
-                    </div>
-
-                    <div class="artist">
-                        Nicole
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="music-controls">
-
-                <button
-                    id="playButton"
-                    title="Play / Pause"
-                >
-                    ▶
-                </button>
-
-                <div class="progress-area">
-
-                    <input
-                        type="range"
-                        id="progress"
-                        value="0"
-                        min="0"
-                        max="100"
-                    >
-
-                    <div class="time">
-
-                        <span id="currentTime">
-                            0:00
-                        </span>
-
-                        <span id="duration">
-                            0:00
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <audio
-                id="music"
-                preload="metadata"
-                loop
-            >
-
-                <source
-                    src="Panaginip - nicole (Lyrics).mp3"
-                    type="audio/mpeg"
-                >
-
-            </audio>
-
-        </div>
-
-
-        <!-- =================================================
-             MESSAGE
-        ================================================== -->
-
-        <p>
-            Patawad unang una sa lahat.. may dahilan ang aking
-            katahimikan at pag iwas, tumopad lang ako sa usapan
-            na hayaan na daw muna kita hanggang sa makapagtapos..
-            hanggang sa nakikita ko na masaya at nasa mabuti ka,
-            at ayoko ko nang sirain uli yon at bilang respeto sa
-            lahat ng mga nagmamahal sayo, malake ang respeto ko
-            sa buong pamilya mo,. at sa tingin ko yon ang mas
-            mahirap tanggapin o gawin, wala akong Karapatan.
-        </p>
-
-        <p>
-            Ayokong sirain ang potensyal mo, dahil maraming taong
-            naniniwala sayo na "malayo ang mararating mo."
-        </p>
-
-        <p>
-            Patawad sa pagiging mahina ko.... wala ako sa normal
-            na ako sa mga panahon nayon, sa totoo lang wala akong
-            natandaan sa mga nangyare satin non, hanggang sa..
-            siguro "nagising" nadugtong-dugtong ko nalang....
-        </p>
-
-        <p>
-            Hindi pala sa sinasabe ko na ako ang tama, wala akong
-            galit. Kung meron man siguro tampo .. matagal ko narin
-            pala nasulat to at gustong sabihin o ibigay ng personal
-            heheh (may prof.)...
-        </p>
-
-        <p>
-            Pasensya kung di manlang mas nakilala ng husto,{
-            basta ito nalang , hindi sa pag mamayabang (dahil
-            Kahit kailan parang mortal sin sakin yon heheh),
-            yong palagi kung pagpapatawa o yumor sa jokes
-            (on the spot)/humble kahit yon lang ayokong mag mukhang
-            sobrang galing hahah siguro ihalintulad kahit kunti
-            nalang o hahah kay Ranchoddas Chanchad, pasensya na
-            kung nasingit pa to heheh}.......
-        </p>
-
-        <p>
-            Nangibabaw sa akin ang hiya at pagiging di handa.
-            Kasalanan ko lahat.. hindi balewala sakin lahat kung
-            alam mo lang,.. isa ka sa mga naging inspirasyon ko
-            kung bat nag papatuloy, kasama ka sa mga panalangin
-            na naway nasa mabuti ka palagi.
-        </p>
-
-        <p>
-            Ito na ang unat huli. patawad.. patawad.
-        </p>
-
-        <p class="signature">
+          <div class="signature">
+            With a sincere heart,<br>
             -Phunsukh Wangdu
-        </p>
-
-        <div class="footer">
-            Salamat sa lahat ng maganda. ♥
+          </div>
         </div>
 
-    </div>
+        <div class="music-box">
+          <p>🎵 A little song for you 🎵</p>
 
-</section>
+          <audio id="myMusic" controls loop preload="metadata">
+            <source src="Panaginip - nicole (Lyrics).mp3" type="audio/mpeg">
+            Your browser does not support audio playback.
+          </audio>
 
+          <p style="font-size: 12px; margin: 10px 0 0;">
+            Press play to listen to the song. ♡
+          </p>
+        </div>
 
+        <button type="button" id="closeButton" class="close-button">
+          Close letter 💌
+        </button>
+      </div>
 
-<script>
+      <p class="letter-footer">
+        Made with love and a little bit of courage. 🌷
+      </p>
+    </main>
+  </section>
 
-/* =====================================================
-   PASSWORD
-====================================================== */
+  <script>
+    const correctPassword = "inah";
 
-/* PASSWORD: inah */
+    const passwordForm = document.getElementById("passwordForm");
+    const passwordInput = document.getElementById("passwordInput");
+    const passwordSection = document.getElementById("passwordSection");
+    const letterSection = document.getElementById("letterSection");
+    const errorMessage = document.getElementById("error");
+    const music = document.getElementById("myMusic");
+    const closeButton = document.getElementById("closeButton");
 
-const correctPassword = "inah";
+    passwordForm.addEventListener("submit", function(event) {
+      event.preventDefault();
 
-const passwordScreen =
-    document.getElementById(
-        "passwordScreen"
-    );
+      const enteredNickname =
+        passwordInput.value.trim().toLowerCase();
 
-const passwordInput =
-    document.getElementById(
-        "passwordInput"
-    );
+      if (enteredNickname === correctPassword) {
+        passwordSection.style.display = "none";
+        letterSection.style.display = "block";
+        document.title = "sardinesPoorevah 🌷";
+        errorMessage.textContent = "";
 
-const unlockButton =
-    document.getElementById(
-        "unlockButton"
-    );
-
-const errorMessage =
-    document.getElementById(
-        "errorMessage"
-    );
-
-const letterPage =
-    document.getElementById(
-        "letterPage"
-    );
-
-
-function unlockLetter() {
-
-    const enteredPassword =
-        passwordInput.value.trim();
-
-    if (
-        enteredPassword ===
-        correctPassword
-    ) {
-
-        passwordScreen.style.display =
-            "none";
-
-        letterPage.style.display =
-            "block";
-
-        window.scrollTo(
-            0,
-            0
-        );
-
-        /*
-         * Music attempts to play
-         * after the user clicks Unlock.
-         */
-
-        music.play()
-        .then(function() {
-
-            playButton.textContent =
-                "❚❚";
-
-            musicIcon.classList.add(
-                "playing"
-            );
-
-        })
-        .catch(function() {
-
-            playButton.textContent =
-                "▶";
-
+        music.play().catch(function() {
+          // Press Play manually if the browser blocks autoplay.
         });
 
-    }
-
-    else {
-
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
         errorMessage.textContent =
-            "Incorrect code. Please try again.";
+          "Nickname not recognized. Please try again.";
 
         passwordInput.value = "";
-
         passwordInput.focus();
+      }
+    });
 
+    closeButton.addEventListener("click", function() {
+      music.pause();
+      music.currentTime = 0;
+
+      letterSection.style.display = "none";
+      passwordSection.style.display = "block";
+
+      document.title =
+        "Professional Pretending: Career Opportunities";
+
+      passwordInput.value = "";
+      errorMessage.textContent = "";
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const tulipEmojis = ["🌷", "🌸", "💗"];
+
+    function createTulip() {
+      if (letterSection.style.display !== "block") return;
+
+      const tulip = document.createElement("div");
+      tulip.className = "tulip";
+
+      tulip.textContent =
+        tulipEmojis[
+          Math.floor(Math.random() * tulipEmojis.length)
+        ];
+
+      tulip.style.left = Math.random() * 100 + "vw";
+      tulip.style.animationDuration =
+        (7 + Math.random() * 6) + "s";
+
+      tulip.style.fontSize =
+        (17 + Math.random() * 15) + "px";
+
+      document.body.appendChild(tulip);
+
+      setTimeout(function() {
+        tulip.remove();
+      }, 14000);
     }
 
-}
-
-
-unlockButton.addEventListener(
-    "click",
-    unlockLetter
-);
-
-
-passwordInput.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key ===
-            "Enter"
-        ) {
-
-            unlockLetter();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   MUSIC PLAYER
-====================================================== */
-
-const music =
-    document.getElementById(
-        "music"
-    );
-
-const playButton =
-    document.getElementById(
-        "playButton"
-    );
-
-const musicIcon =
-    document.getElementById(
-        "musicIcon"
-    );
-
-const progress =
-    document.getElementById(
-        "progress"
-    );
-
-const currentTime =
-    document.getElementById(
-        "currentTime"
-    );
-
-const duration =
-    document.getElementById(
-        "duration"
-    );
-
-
-playButton.addEventListener(
-    "click",
-    function() {
-
-        if (
-            music.paused
-        ) {
-
-            music.play();
-
-        }
-
-        else {
-
-            music.pause();
-
-        }
-
-    }
-);
-
-
-music.addEventListener(
-    "play",
-    function() {
-
-        playButton.textContent =
-            "❚❚";
-
-        musicIcon.classList.add(
-            "playing"
-        );
-
-    }
-);
-
-
-music.addEventListener(
-    "pause",
-    function() {
-
-        playButton.textContent =
-            "▶";
-
-        musicIcon.classList.remove(
-            "playing"
-        );
-
-    }
-);
-
-
-function formatTime(seconds) {
-
-    if (
-        isNaN(seconds)
-    ) {
-
-        return "0:00";
-
-    }
-
-    const minutes =
-        Math.floor(
-            seconds / 60
-        );
-
-    const secs =
-        Math.floor(
-            seconds % 60
-        );
-
-    return (
-        minutes +
-        ":" +
-        (
-            secs < 10
-            ? "0"
-            : ""
-        ) +
-        secs
-    );
-
-}
-
-
-music.addEventListener(
-    "loadedmetadata",
-    function() {
-
-        duration.textContent =
-            formatTime(
-                music.duration
-            );
-
-    }
-);
-
-
-music.addEventListener(
-    "timeupdate",
-    function() {
-
-        if (
-            music.duration
-        ) {
-
-            progress.value =
-                (
-                    music.currentTime /
-                    music.duration
-                ) *
-                100;
-
-        }
-
-        currentTime.textContent =
-            formatTime(
-                music.currentTime
-            );
-
-    }
-);
-
-
-progress.addEventListener(
-    "input",
-    function() {
-
-        if (
-            music.duration
-        ) {
-
-            music.currentTime =
-                (
-                    progress.value /
-                    100
-                ) *
-                music.duration;
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   FLOATING TULIPS
-====================================================== */
-
-function createTulip() {
-
-    const tulip =
-        document.createElement(
-            "div"
-        );
-
-    tulip.className =
-        "floating-tulip";
-
-    tulip.textContent =
-        "🌷";
-
-    tulip.style.left =
-        Math.random() *
-        100 +
-        "vw";
-
-    tulip.style.fontSize =
-        (
-            18 +
-            Math.random() *
-            15
-        ) +
-        "px";
-
-    tulip.style.animationDuration =
-        (
-            6 +
-            Math.random() *
-            5
-        ) +
-        "s";
-
-    document.body.appendChild(
-        tulip
-    );
-
-    setTimeout(
-        function() {
-
-            tulip.remove();
-
-        },
-        11000
-    );
-
-}
-
-
-setInterval(
-    createTulip,
-    1500
-);
-
-</script>
+    setInterval(createTulip, 1200);
+  </script>
 
 </body>
 </html>
