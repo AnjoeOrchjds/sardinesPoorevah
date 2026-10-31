@@ -1,583 +1,973 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ♡</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Pretending: Career Opportunities</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* LOGIN PAGE */
-#loginPage {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #101c35, #263d5c, #101c35);
-}
-
-.login-card {
-    width: 100%;
-    max-width: 420px;
-    padding: 45px 35px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 18px;
-    background: rgba(255,255,255,0.08);
-    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
-    text-align: center;
-    color: white;
-}
-
-.login-card h1 {
-    font-size: 27px;
-    letter-spacing: 3px;
-    color: #e7c982;
-    margin-bottom: 12px;
-}
-
-.login-card p {
-    font-size: 14px;
-    color: #d4dbea;
-    margin-bottom: 28px;
-}
-
-.login-card input {
-    width: 100%;
-    padding: 14px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.3);
-    outline: none;
-    background: rgba(255,255,255,0.12);
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    margin-bottom: 18px;
-}
-
-.login-card input::placeholder {
-    color: #c4ccda;
-}
-
-.login-card button {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #d8b66b, #f0d99e);
-    color: #17243b;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.login-card button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(216,182,107,0.3);
-}
-
-#errorMessage {
-    color: #ffb4b4;
-    font-size: 13px;
-    margin-top: 15px;
-    min-height: 18px;
-}
-
-/* LETTER PAGE */
-#letterPage {
-    display: none;
-    position: relative;
-    min-height: 100vh;
-    padding: 35px 15px 60px;
-    background: linear-gradient(135deg, #ffe0eb, #fff0f5, #f8dce9);
-    overflow: hidden;
-}
-
-.letter-container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 760px;
-    margin: 35px auto;
-    padding: 35px 30px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.85);
-    box-shadow: 0 10px 35px rgba(145,75,105,0.15);
-}
-
-.letter-title {
-    text-align: center;
-    color: #a64d73;
-    font-family: Georgia, serif;
-    font-size: 30px;
-    margin-bottom: 25px;
-}
-
-.letter-content {
-    color: #59434d;
-    font-size: 15px;
-    line-height: 1.9;
-    text-align: justify;
-}
-
-.letter-content p {
-    margin-bottom: 20px;
-}
-
-.close-button {
-    display: block;
-    margin: 30px auto 0;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 25px;
-    background: #c76b91;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-button:hover {
-    background: #a64d73;
-    transform: translateY(-2px);
-}
-
-/* MUSIC PLAYER */
-.music-box {
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto 25px;
-    padding: 18px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 6px 20px rgba(145,75,105,0.13);
-}
-
-.music-heading {
-    text-align: center;
-    color: #a64d73;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.custom-player {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.album-art {
-    width: 52px;
-    height: 52px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #e9a5bf, #c76b91);
-    color: white;
-    font-size: 25px;
-}
-
-.track-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.track-info strong {
-    display: block;
-    color: #754158;
-    font-size: 14px;
-}
-
-.track-info span {
-    display: block;
-    color: #a77b8e;
-    font-size: 12px;
-    margin-top: 3px;
-}
-
-.music-progress {
-    width: 100%;
-    margin-top: 8px;
-    accent-color: #c76b91;
-    cursor: pointer;
-}
-
-.time-row {
-    display: flex;
-    justify-content: space-between;
-    color: #a77b8e;
-    font-size: 10px;
-}
-
-.play-button {
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-    border: none;
-    border-radius: 50%;
-    background: #c76b91;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.play-button:hover {
-    background: #a64d73;
-}
-
-/* FLOATING DECORATIONS */
-.decoration {
-    position: fixed;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.45;
-    font-size: 35px;
-    animation: float 5s ease-in-out infinite;
-}
-
-.decoration.one {
-    top: 20px;
-    left: 20px;
-}
-
-.decoration.two {
-    top: 25px;
-    right: 25px;
-    animation-delay: 1s;
-}
-
-.decoration.three {
-    bottom: 20px;
-    left: 25px;
-    animation-delay: 2s;
-}
-
-.decoration.four {
-    bottom: 25px;
-    right: 25px;
-    animation-delay: 1.5s;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(-5deg);
+  <style>
+    * {
+      box-sizing: border-box;
     }
-    50% {
-        transform: translateY(-15px) rotate(8deg);
-    }
-}
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef1f5;
+      color: #263449;
+      overflow-x: hidden;
+    }
+
+    /* SAKADA CAREERS LOGIN PAGE */
+
+    #passwordSection {
+      min-height: 100vh;
+      background: #eef1f5;
+    }
+
+    .topbar {
+      width: 100%;
+      background: #14243d;
+      color: white;
+      padding: 17px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .brand-name span {
+      color: #ffffff;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+    }
+
+    .brand-name small {
+      color: #9fb6d4;
+      font-size: 9px;
+      font-weight: normal;
+      letter-spacing: 2.2px;
+    }
+
+    .logo-mark {
+      width: 47px;
+      height: 47px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #f4c66a, #d99532);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .logo-mark svg {
+      width: 31px;
+      height: 31px;
+    }
+
+    .topbar-label {
+      font-size: 11px;
+      color: #d6dfeb;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .job-banner {
+      background: linear-gradient(120deg, #203d63, #315b85);
+      color: white;
+      padding: 48px 20px 58px;
+      text-align: center;
+    }
+
+    .banner-tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 30px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 17px;
+      color: #f4d58d;
+    }
+
+    .job-banner h1 {
+      margin: 0 auto 13px;
+      max-width: 850px;
+      font-size: clamp(27px, 5vw, 40px);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .job-banner p {
+      margin: 0;
+      color: #d9e5f3;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
     .login-card {
-        padding: 35px 25px;
+      width: min(92%, 440px);
+      margin: -27px auto 45px;
+      position: relative;
+      background: white;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(27, 45, 70, 0.13);
+      border: 1px solid #dce2ea;
+    }
+
+    .login-card h2 {
+      font-size: 23px;
+      margin: 0 0 9px;
+      color: #20334e;
+    }
+
+    .login-description {
+      color: #68768a;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .field-label {
+      display: block;
+      text-align: left;
+      font-size: 13px;
+      font-weight: bold;
+      color: #35445a;
+      margin-bottom: 8px;
+    }
+
+    #passwordInput {
+      width: 100%;
+      border: 1px solid #cbd3df;
+      border-radius: 5px;
+      padding: 14px 12px;
+      font-size: 15px;
+      outline: none;
+      background: #fff;
+      color: #263449;
+      margin-bottom: 17px;
+    }
+
+    #passwordInput:focus {
+      border-color: #315e91;
+      box-shadow: 0 0 0 3px rgba(49, 94, 145, 0.12);
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 5px;
+      color: #14243d;
+      background: #e8bb60;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .login-button:hover {
+      background: #dba844;
+      transform: translateY(-1px);
+    }
+
+    #error {
+      color: #b42332;
+      font-size: 13px;
+      min-height: 18px;
+      margin: 12px 0 0;
+    }
+
+    .secure-note {
+      border-top: 1px solid #e6eaf0;
+      margin-top: 23px;
+      padding-top: 17px;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #8792a2;
+      text-align: center;
+    }
+
+    .login-footer {
+      text-align: center;
+      font-size: 12px;
+      color: #7a8798;
+      padding: 0 15px 25px;
+    }
+
+    /* LETTER PAGE */
+
+    #letterSection {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5, #ffd6e4);
+      color: #7b2948;
+      font-family: Georgia, "Times New Roman", serif;
+      padding: 1px 0 35px;
+    }
+
+    .corner-tulip {
+      position: fixed;
+      font-size: 38px;
+      opacity: 0.75;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .top-left {
+      top: 12px;
+      left: 14px;
+      transform: rotate(-20deg);
+    }
+
+    .top-right {
+      top: 12px;
+      right: 14px;
+      transform: rotate(20deg);
+    }
+
+    .bottom-left {
+      bottom: 12px;
+      left: 14px;
+      transform: rotate(15deg);
+    }
+
+    .bottom-right {
+      bottom: 12px;
+      right: 14px;
+      transform: rotate(-15deg);
     }
 
     .letter-container {
-        padding: 27px 20px;
-        margin: 20px auto;
+      position: relative;
+      z-index: 1;
+      width: min(90%, 700px);
+      margin: 0 auto;
+      padding: 35px 0 20px;
+      text-align: center;
     }
 
-    .letter-title {
-        font-size: 25px;
+    .letter-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px solid #ffc1d5;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 8px 25px rgba(177, 67, 108, 0.14);
     }
 
-    .letter-content {
-        font-size: 14px;
-        line-height: 1.8;
+    .letter {
+      text-align: left;
+      line-height: 1.9;
+      font-size: 17px;
     }
 
-    .decoration {
-        font-size: 25px;
+    .letter p {
+      margin: 0 0 22px;
+      white-space: pre-line;
     }
-}
-</style>
+
+    .signature {
+      text-align: right;
+      margin-top: 25px;
+      font-style: italic;
+      color: #b83262;
+    }
+
+    /* MUSIC PLAYER */
+
+    .music-box {
+      margin: 0 0 28px;
+      padding: 17px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #fff4f8, #ffe5ef);
+      border: 1px solid #f1b5cc;
+      box-shadow: 0 5px 14px rgba(177, 67, 108, 0.09);
+      text-align: left;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .music-heading {
+      text-align: center;
+      color: #b83262;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .custom-player {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .album-art {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #f6a8c5, #d94f83);
+      color: white;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(177, 67, 108, 0.2);
+    }
+
+    .track-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .track-info strong,
+    .track-info span {
+      display: block;
+    }
+
+    .track-info strong {
+      color: #7b2948;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .track-info span {
+      color: #a65a78;
+      font-size: 12px;
+    }
+
+    .music-progress {
+      width: 100%;
+      margin: 10px 0 2px;
+      accent-color: #d94f83;
+      cursor: pointer;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      color: #a65a78;
+      font-size: 10px;
+    }
+
+    .play-button {
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      border: none;
+      border-radius: 50%;
+      background: #d94f83;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(177, 67, 108, 0.2);
+    }
+
+    .play-button:hover {
+      background: #b83262;
+      transform: scale(1.04);
+    }
+
+    .close-button {
+      border: none;
+      border-radius: 25px;
+      background: #d94f83;
+      color: white;
+      padding: 12px 24px;
+      margin-top: 20px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      background: #b83262;
+    }
+
+    .tulip {
+      position: fixed;
+      bottom: -40px;
+      font-size: 23px;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp 10s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      90% {
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        padding: 15px 5%;
+      }
+
+      .brand {
+        gap: 9px;
+      }
+
+      .brand-name span {
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+
+      .brand-name small {
+        font-size: 8px;
+        letter-spacing: 1.4px;
+      }
+
+      .logo-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .logo-mark svg {
+        width: 27px;
+        height: 27px;
+      }
+
+      .topbar-label {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .job-banner {
+        padding: 38px 18px 50px;
+      }
+
+      .job-banner h1 {
+        font-size: 28px;
+      }
+
+      .login-card {
+        padding: 25px 21px;
+      }
+
+      .letter-container {
+        width: 92%;
+        padding-top: 45px;
+      }
+
+      .letter-card {
+        padding: 20px 17px;
+      }
+
+      .letter {
+        font-size: 16px;
+      }
+
+      .corner-tulip {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- LOGIN PAGE -->
-<section id="loginPage">
-    <div class="login-card">
-        <h1>SAKADA CAREERS</h1>
-        <p>A little something waiting for you ♡</p>
+  <!-- SAKADA CAREERS LOGIN PAGE -->
 
-        <form id="passwordForm">
-            <input
-                type="password"
-                id="passwordInput"
-                placeholder="Enter your password"
-                autocomplete="off"
-                required
-            >
+  <section id="passwordSection">
 
-            <button type="submit">OPEN MESSAGE</button>
-        </form>
+    <header class="topbar">
 
-        <div id="errorMessage"></div>
+      <div class="brand">
+
+        <div class="logo-mark" aria-label="Sakada Careers logo">
+          <svg viewBox="0 0 40 40" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+
+            <path
+              d="M13 12V9.5C13 8.1 14.1 7 15.5 7H24.5C25.9 7 27 8.1 27 9.5V12"
+              stroke="#14243d"
+              stroke-width="2.8"
+              stroke-linecap="round"
+            />
+
+            <rect
+              x="5"
+              y="12"
+              width="30"
+              height="21"
+              rx="4"
+              stroke="#14243d"
+              stroke-width="2.8"
+            />
+
+            <path
+              d="M5 21H35"
+              stroke="#14243d"
+              stroke-width="2.5"
+            />
+
+            <path
+              d="M16 20V23H24V20"
+              stroke="#14243d"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M12 27L16 30L23 24"
+              stroke="#14243d"
+              stroke-width="2.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+        </div>
+
+        <div class="brand-name">
+          <span>SAKADA CAREERS</span>
+          <small>OPPORTUNITIES AWAIT</small>
+        </div>
+
+      </div>
+
+      <div class="topbar-label">Applicant Portal</div>
+
+    </header>
+
+    <div class="job-banner">
+
+      <div class="banner-tag">CAREER OPPORTUNITIES</div>
+
+      <h1>Professional Pretending: Career Opportunities</h1>
+
+      <p>
+        Welcome to our applicant portal.<br>
+        Sign in below to continue your application.
+      </p>
+
     </div>
-</section>
+
+    <div class="login-card">
+
+      <h2>Applicant Sign In</h2>
+
+      <p class="login-description">
+        Please enter your registered nickname to access your application.
+      </p>
+
+      <form id="passwordForm">
+
+        <label class="field-label" for="passwordInput">
+          Nickname
+        </label>
+
+        <input
+          type="text"
+          id="passwordInput"
+          placeholder="nickname mo po, lower case lang heheh"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          required
+        >
+
+        <button type="submit" class="login-button">
+          Sign In →
+        </button>
+
+        <p id="error" aria-live="polite"></p>
+
+      </form>
+
+      <div class="secure-note">
+        Applicant Access Portal<br>
+        Please make sure your information is entered correctly.
+      </div>
+
+    </div>
+
+    <div class="login-footer">
+      © 2026 Sakada Careers. All rights reserved.
+    </div>
+
+  </section>
 
 
-<!-- LETTER PAGE -->
-<section id="letterPage">
+  <!-- LETTER PAGE -->
 
-    <div class="decoration one">🌷</div>
-    <div class="decoration two">🌷</div>
-    <div class="decoration three">💗</div>
-    <div class="decoration four">🌷</div>
+  <section id="letterSection">
 
-    <div class="letter-container">
+    <div class="corner-tulip top-left">🌷</div>
+    <div class="corner-tulip top-right">🌷</div>
+    <div class="corner-tulip bottom-left">🌷</div>
+    <div class="corner-tulip bottom-right">🌷</div>
 
-        <h1 class="letter-title">A Letter for You ♡</h1>
+    <main class="letter-container">
+
+      <div class="letter-card">
 
         <!-- MUSIC PLAYER -->
+
         <div class="music-box">
 
-            <div class="music-heading">♫ A song for you ♡</div>
+          <div class="music-heading">
+            ♫ A song for you ♡
+          </div>
 
-            <div class="custom-player">
+          <div class="custom-player">
 
-                <div class="album-art">♫</div>
+            <div class="album-art" aria-hidden="true">
+              ♫
+            </div>
 
-                <div class="track-info">
-                    <strong>89th tantrums</strong>
-                    <span>Xchizo</span>
+            <div class="track-info">
 
-                    <input
-                        id="musicProgress"
-                        class="music-progress"
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="0"
-                        aria-label="Song progress"
-                    >
+              <strong>Panaginip</strong>
+              <span>Nicole</span>
 
-                    <div class="time-row">
-                        <span id="currentTime">0:00</span>
-                        <span id="duration">0:00</span>
-                    </div>
-                </div>
+              <input
+                id="musicProgress"
+                class="music-progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="Song progress"
+              >
 
-                <button
-                    type="button"
-                    id="playButton"
-                    class="play-button"
-                    aria-label="Play music"
-                >▶</button>
+              <div class="time-row">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+              </div>
 
             </div>
 
-            <audio id="myMusic" loop preload="metadata">
-                <source src="89th tantrums - Xchizo.mp3" type="audio/mpeg">
-                Your browser does not support audio playback.
-            </audio>
+            <button
+              type="button"
+              id="playButton"
+              class="play-button"
+              aria-label="Play music"
+            >
+              ▶
+            </button>
+
+          </div>
+
+          <audio id="myMusic" loop preload="metadata">
+            <source
+              src="Panaginip - nicole (Lyrics).mp3"
+              type="audio/mpeg"
+            >
+            Your browser does not support audio playback.
+          </audio>
 
         </div>
 
 
-        <!-- LETTER CONTENT -->
-        <div class="letter-content">
+        <!-- UPDATED LETTER CONTENT -->
 
-            <p>
-                Patawad unang una sa lahat.. may dahilan ang aking katahimikan at pag-iwas,
-                tumupad lang ako sa usapan na hayaan na raw muna kita hanggang sa makapagtapos.
-                at sa tingin ko yon ang mas mahirap tanggapin o gawin, wala akong karapatan at
-                sobrang baba ng tingin ko sa sarili ko ng mga panahon na yon napaka wala kong
-                kwenta.... hanggang sa nakikita ko na masaya kana at nasa mabuti,. at bilang
-                respeto sa mga nagmamahal sayo dahil malaki rin ang respeto ko sa lahat ng
-                relatives mo,. kahit kailan wala akong intensyong manira o sirain uli yon kaya
-                mas pinili kong lumayo at hindi riyan nag patuloy (na kahit sa malayong tanaw
-                ‘gusto kang makita na nasa mabuti palagi).. kaso lang sa tingin ko di ako
-                makakapag build-up kung yon palagi nakikita ko.. yong iisipin ko nalang parati
-                na ''nanalo ako sa lotto sabay nasunogan na 3x yong pighati..
-            </p>
+        <div class="letter">
 
-            <p>
-                Ayokong sirain ang potensyal na meron ka, dahil maraming taong naniniwala sayo
-                na "malayo ang mararating mo."
-            </p>
+          <p>Patawad unang una sa lahat.. may dahilan ang aking katahimikan at pag-iwas,
+tumupad lang ako sa usapan na hayaan na raw muna kita hanggang sa makapagtapos.
+at sa tingin ko yon ang mas mahirap tanggapin o gawin, wala akong
+karapatan at sobrang baba ng tingin ko sa sarili ko ng mga panahon na yon napaka wala kong kwenta....
+hanggang sa nakikita ko na masaya kana at nasa mabuti,. at bilang respeto sa mga nagmamahal sayo dahil  malaki rin ang respeto ko sa lahat ng
+relatives mo,.
+  kahit kailan wala akong intensyong  manira o sirain uli yon kaya mas pinili kong lumayo at hindi riyan nag patuloy (na kahit sa malayong tanaw ‘gusto kang makita na nasa mabuti palagi).. kaso lang sa tingin ko di ako makakapag build-up kung yon palagi nakikita ko.. yong iisipin ko nalang parati na ''nanalo ako sa lotto sabay nasunogan na 3x yong pighati..</p>
 
-            <p>
-                Patawad sa pagiging mahina ko.... wala ako sa normal na ako sa mga panahon nayon,
-                sa totoo lang wala akong natandaan sa mga nangyare o nagawa ko, hanggang sa..
-                siguro "nagising" nadugtong-dugtong ko nalang.. huli ko na naunawaan lahat at
-                napagtanto. ayos lang kung di mo ako paniwalaan.
-            </p>
+          <p>Ayokong sirain ang potensyal na meron ka, dahil maraming taong naniniwala sayo na
+"malayo ang mararating mo."</p>
 
-            <p>
-                Hindi pala sa sinasabe ko na ako ang tama,gusto ko lang sabihin mga dahilan
-                para manlang kahit papano maiba ng unti pagtingin sakin..
-            </p>
+          <p>Patawad sa pagiging mahina ko.... wala ako sa normal na ako sa mga panahon nayon,
+sa totoo lang wala akong natandaan sa mga nangyare o nagawa ko, hanggang sa..
+siguro "nagising" nadugtong-dugtong ko nalang.. huli ko na naunawaan lahat at napagtanto. ayos lang kung di mo ako paniwalaan.</p>
 
-            <p>
-                wala akong galit(ang kapal talga e no naisip pa talaga). Kung meron man siguro
-                tampo/ na may unting selos at aamin ko na maprinsipyo at matindi ako mag tampo
-                (siguro nasanay bunso e heheh). (.. matagal ko narin pala nasulat to at gustong
-                sabihin o ibigay ng personal heheh (may prof.). {may nadagdag lang}
-            </p>
+          <p>Hindi pala sa sinasabe ko na ako ang tama,gusto ko lang sabihin mga dahilan para manlang kahit papano maiba ng unti pagtingin sakin..</p>
 
-            <p>
-                Pasensya kung di manlang nakilala ng husto. ang lamang kulang siguro sa kanila
-                hindi man kita kabisado ng lubos pero nai-intidihan kita sa lahat ng pagkakataon(
-                dahil sa lahat ng bagay kahit di katalinohan lagi kong hinanahap ang unawa,..
-                ayuko kong i gaslight sarili ko pero sige kahit ngayon lang hahah “mahilig pala ko
-                magpatawa sa lahat ng pagkakataon on the spot” mala Ranchoddas Shamaldas Chanchad
-                {panoorin mo nalang uli pag may time}. At ganon nag na ganon ang personality ko
-                at idol ko rin talaga sya, kabaliktaran ngalang sa talino. humbleness at patience
-                pala pambato ko.. yon lang nagmumukha nakong mabuti e kung sasabihin ko lahat
-                [yayabangan ko na dito once in a lifetime lang to e hahah]..
-            </p>
+          <p>wala akong galit(ang kapal talga e no naisip pa talaga).
+Kung meron man siguro tampo/ na may unting selos at aamin ko na maprinsipyo at  matindi ako mag tampo (siguro nasanay bunso e heheh). (.. matagal ko narin pala nasulat to  at gustong
+sabihin o ibigay ng personal heheh (may prof.). {may nadagdag lang}</p>
 
-            <p>
-                at dagdag ko lang heheh ,nong JS pala di talaga ako sumali dahil alam kung
-                magiging gabi mo yon at ayokong mailang ka sakin, kahit na gigil na gigil si
-                Marl na pinipilit ako non, kaya umayaw narin sya hahah...
-            </p>
+          <p>Pasensya kung di manlang nakilala ng husto. ang lamang kulang siguro sa kanila hindi man kita kabisado ng lubos pero nai-intidihan kita sa lahat ng pagkakataon( dahil sa lahat ng bagay kahit di katalinohan lagi kong hinanahap ang unawa,.. ayuko kong i gaslight sarili ko pero sige kahit ngayon lang hahah “mahilig  pala ko magpatawa sa lahat ng pagkakataon on the spot” mala Ranchoddas Shamaldas Chanchad {panoorin mo nalang uli  pag may time}. At ganon nag na ganon ang personality ko at idol ko rin talaga sya, kabaliktaran ngalang sa talino. humbleness at patience pala pambato ko.. yon lang nagmumukha nakong mabuti e kung sasabihin ko lahat [yayabangan ko na dito once in a lifetime lang to e hahah]..</p>
 
-            <p>
-                time check 3:37am 11-01-26 (ngayon ko lang tinapos sinadya talaga sa gantong
-                araw hahah medjo busy rin kasi sa midterm heheh)
-            </p>
+          <p>at dagdag ko lang heheh ,nong JS pala di talaga ako sumali dahil alam kung magiging gabi mo yon at ayokong mailang ka sakin, kahit na gigil na gigil  si Marl na pinipilit ako non, kaya umayaw narin sya hahah...</p>
 
-            <p>
-                Nangibabaw sa akin ang hiya o takot at pagiging di handa. Kasalanan ko lahat..
-                hindi balewala sakin ang lahat ng yon,. At kung iniisip mo pala na naging bato
-                nako ‘dahil dati palang na kung bakit ganon nalang ako umiiwas ‘hinding-hindi,
-                siguro ngayon ‘oo dahil sa tingin ko matagal nakong nabura at napagsarhan ng
-                pagkakataon. ‘ikaw lang ang naging naka mabutihan ko ng loob.. as in wala na
-                kahit manlang persmob di ko ginawa (kahit may mga nagpapakita ng motibo na
-                fineshi [ang hangin ko dito] pero cross my lungs sa lahat ng mga sinabe ko dito) ..
-            </p>
+          <p>time check 3:37am 11-01-26 (ngayon ko lang tinapos sinadya talaga sa gantong araw hahah medjo busy rin kasi sa midterm heheh)</p>
 
-            <p>
-                Isa ka sa mga naging inspirasyon ko kung bat nag papatuloy,. kung ano man isipin
-                at gustong pagsalitaan ng masakit sakin tatanggapin ko lahat ‘kahit pisakal..
-            </p>
+          <p>Nangibabaw sa akin ang hiya o takot at pagiging di handa.
+Kasalanan ko lahat.. hindi balewala sakin ang lahat ng yon,. At kung iniisip mo pala na naging bato nako  ‘dahil dati palang na kung bakit ganon nalang ako umiiwas ‘hinding-hindi, siguro ngayon ‘oo dahil sa tingin ko matagal nakong nabura at napagsarhan ng pagkakataon. ‘ikaw lang ang naging naka mabutihan ko ng loob.. as in wala na kahit manlang persmob di ko ginawa (kahit may mga nagpapakita ng motibo na fineshi [ang hangin ko dito] pero cross my lungs sa lahat ng mga sinabe ko dito) ..</p>
 
-            <p>
-                ‘kasama ka sa mga panalangin na naway nasa mabuti palagi.
-            </p>
+          <p>Isa ka sa mga naging inspirasyon ko kung bat nag papatuloy,. kung ano man isipin at gustong pagsalitaan ng masakit sakin tatanggapin ko lahat ‘kahit pisakal..</p>
 
-            <p>
-                Ito na ang unat huli. patawad. patawad. patawad..
-            </p>
+          <p>‘kasama ka sa mga panalangin na naway nasa mabuti palagi.</p>
+
+          <p>Ito na ang unat huli. patawad. patawad. patawad..</p>
 
         </div>
 
-        <button class="close-button" id="closeButton">
-            Close Message
+        <button
+          type="button"
+          id="closeButton"
+          class="close-button"
+        >
+          Close letter 💌
         </button>
 
-    </div>
-</section>
+      </div>
+
+    </main>
+
+  </section>
 
 
-<script>
-// LOGIN FUNCTION
-const passwordForm = document.getElementById("passwordForm");
-const passwordInput = document.getElementById("passwordInput");
-const loginPage = document.getElementById("loginPage");
-const letterPage = document.getElementById("letterPage");
-const errorMessage = document.getElementById("errorMessage");
-
-passwordForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+  <script>
 
     const correctPassword = "inah";
 
-    if (passwordInput.value === correctPassword) {
-        loginPage.style.display = "none";
-        letterPage.style.display = "block";
-        errorMessage.textContent = "";
-    } else {
-        errorMessage.textContent = "Incorrect password. Please try again.";
-        passwordInput.value = "";
+    const passwordForm = document.getElementById("passwordForm");
+    const passwordInput = document.getElementById("passwordInput");
+    const passwordSection = document.getElementById("passwordSection");
+    const letterSection = document.getElementById("letterSection");
+    const errorMessage = document.getElementById("error");
+
+    const music = document.getElementById("myMusic");
+    const closeButton = document.getElementById("closeButton");
+    const playButton = document.getElementById("playButton");
+
+    const musicProgress = document.getElementById("musicProgress");
+    const currentTimeLabel = document.getElementById("currentTime");
+    const durationLabel = document.getElementById("duration");
+
+
+    /* FORMAT SONG TIME */
+
+    function formatTime(seconds) {
+
+      if (!Number.isFinite(seconds)) {
+        return "0:00";
+      }
+
+      const mins = Math.floor(seconds / 60);
+
+      const secs = Math.floor(seconds % 60)
+        .toString()
+        .padStart(2, "0");
+
+      return mins + ":" + secs;
     }
-});
 
 
-// CLOSE LETTER
-document.getElementById("closeButton").addEventListener("click", function() {
-    letterPage.style.display = "none";
-    loginPage.style.display = "flex";
-    passwordInput.value = "";
+    /* PLAY AND PAUSE MUSIC */
 
-    music.pause();
-    music.currentTime = 0;
-    playButton.textContent = "▶";
-});
+    playButton.addEventListener("click", function() {
 
+      if (music.paused) {
 
-// MUSIC PLAYER
-const music = document.getElementById("myMusic");
-const playButton = document.getElementById("playButton");
-const musicProgress = document.getElementById("musicProgress");
-const currentTimeDisplay = document.getElementById("currentTime");
-const durationDisplay = document.getElementById("duration");
+        music.play().catch(function() {
+          console.log("Unable to play the music.");
+        });
 
-function formatTime(seconds) {
-    if (!Number.isFinite(seconds)) return "0:00";
+      } else {
 
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-
-    return minutes + ":" + String(remainingSeconds).padStart(2, "0");
-}
-
-playButton.addEventListener("click", function() {
-    if (music.paused) {
-        music.play()
-            .then(() => {
-                playButton.textContent = "❚❚";
-            })
-            .catch(() => {
-                alert("Hindi ma-play ang music. Siguraduhing nasa folder ang MP3 file at tama ang filename.");
-            });
-    } else {
         music.pause();
-        playButton.textContent = "▶";
+
+      }
+
+    });
+
+
+    music.addEventListener("play", function() {
+
+      playButton.textContent = "Ⅱ";
+      playButton.setAttribute("aria-label", "Pause music");
+
+    });
+
+
+    music.addEventListener("pause", function() {
+
+      playButton.textContent = "▶";
+      playButton.setAttribute("aria-label", "Play music");
+
+    });
+
+
+    /* DISPLAY SONG DURATION */
+
+    music.addEventListener("loadedmetadata", function() {
+
+      durationLabel.textContent = formatTime(music.duration);
+
+    });
+
+
+    /* UPDATE MUSIC PROGRESS */
+
+    music.addEventListener("timeupdate", function() {
+
+      currentTimeLabel.textContent = formatTime(music.currentTime);
+
+      if (Number.isFinite(music.duration) && music.duration > 0) {
+
+        musicProgress.value =
+          (music.currentTime / music.duration) * 100;
+
+      }
+
+    });
+
+
+    /* ALLOW SEEKING THROUGH THE SONG */
+
+    musicProgress.addEventListener("input", function() {
+
+      if (Number.isFinite(music.duration) && music.duration > 0) {
+
+        music.currentTime =
+          (Number(musicProgress.value) / 100) * music.duration;
+
+      }
+
+    });
+
+
+    /* LOGIN */
+
+    passwordForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const enteredNickname =
+        passwordInput.value.trim().toLowerCase();
+
+      if (enteredNickname === correctPassword) {
+
+        passwordSection.style.display = "none";
+        letterSection.style.display = "block";
+
+        document.title = "A letter for you ♡";
+        errorMessage.textContent = "";
+
+        music.play().catch(function() {
+          // Press Play manually if autoplay is blocked.
+        });
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      } else {
+
+        errorMessage.textContent =
+          "Nickname not recognized. Please try again.";
+
+        passwordInput.value = "";
+        passwordInput.focus();
+
+      }
+
+    });
+
+
+    /* CLOSE LETTER AND RETURN TO LOGIN */
+
+    closeButton.addEventListener("click", function() {
+
+      music.pause();
+      music.currentTime = 0;
+
+      playButton.textContent = "▶";
+      musicProgress.value = 0;
+      currentTimeLabel.textContent = "0:00";
+
+      letterSection.style.display = "none";
+      passwordSection.style.display = "block";
+
+      document.title =
+        "Professional Pretending: Career Opportunities";
+
+      passwordInput.value = "";
+      errorMessage.textContent = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* FLOATING TULIPS AND HEARTS */
+
+    const tulipEmojis = ["🌷", "🌸", "💗"];
+
+    function createTulip() {
+
+      if (letterSection.style.display !== "block") {
+        return;
+      }
+
+      const tulip = document.createElement("div");
+
+      tulip.className = "tulip";
+
+      tulip.textContent =
+        tulipEmojis[
+          Math.floor(Math.random() * tulipEmojis.length)
+        ];
+
+      tulip.style.left = Math.random() * 100 + "vw";
+
+      tulip.style.animationDuration =
+        (7 + Math.random() * 6) + "s";
+
+      tulip.style.fontSize =
+        (17 + Math.random() * 15) + "px";
+
+      document.body.appendChild(tulip);
+
+      setTimeout(function() {
+        tulip.remove();
+      }, 14000);
+
     }
-});
 
-music.addEventListener("loadedmetadata", function() {
-    durationDisplay.textContent = formatTime(music.duration);
-});
+    setInterval(createTulip, 1200);
 
-music.addEventListener("timeupdate", function() {
-    if (Number.isFinite(music.duration) && music.duration > 0) {
-        musicProgress.value = (music.currentTime / music.duration) * 100;
-    }
-
-    currentTimeDisplay.textContent = formatTime(music.currentTime);
-});
-
-musicProgress.addEventListener("input", function() {
-    if (Number.isFinite(music.duration) && music.duration > 0) {
-        music.currentTime = (musicProgress.value / 100) * music.duration;
-    }
-});
-
-music.addEventListener("ended", function() {
-    playButton.textContent = "▶";
-});
-</script>
+  </script>
 
 </body>
 </html>
